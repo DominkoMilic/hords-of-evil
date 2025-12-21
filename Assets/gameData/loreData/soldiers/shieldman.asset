@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c77a9e0bd785e784cb90546d4e29708f, type: 3}
+  m_Name: shieldman
+  m_EditorClassIdentifier: 
+  nameEnglish: Shieldman
+  nameCroatian: "\u0160titono\u0161a"
+  nameSpanish: Escudero
+  image: {fileID: 21300000, guid: 7e4776ec7ceaa5146bf6aa5dc1e891d6, type: 3}
+  roleEnglish: "Defensive Tank\r"
+  weaknessEnglish: "Low damage output\r"
+  loreEnglish: "Encased in iron and duty, shieldmen stand where others would fall,
+    buying time with blood and steel.\r"
+  roleCroatian: "Obrambeni tenk\r"
+  weaknessCroatian: "Slaba napada\u010Dka mo\u0107\r"
+  loreCroatian: "Okovani \u010Delikom i du\u017Eno\u0161\u0107u, \u0161titono\u0161e
+    stoje ondje gdje bi drugi pali, kupuju\u0107i vrijeme vlastitim \u017Eivotima.\r"
+  roleSpanish: "Tanque defensivo\r"
+  weaknessSpanish: "Bajo da\xF1o\r"
+  loreSpanish: "Cubiertos de acero y deber, los escuderos permanecen donde otros
+    caer\xEDan, ganando tiempo con su propia vida.\r"

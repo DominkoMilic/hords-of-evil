@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c77a9e0bd785e784cb90546d4e29708f, type: 3}
+  m_Name: archer
+  m_EditorClassIdentifier: 
+  nameEnglish: Archer
+  nameCroatian: Strijelac
+  nameSpanish: Arquero
+  image: {fileID: -4052678597683027472, guid: b621cdeed92733448944f17d52978a91, type: 3}
+  roleEnglish: "Ranged DPS\r"
+  weaknessEnglish: "Vulnerable to fast enemies\r"
+  loreEnglish: "Swift and vigilant, archers rain death from afar, trusting their
+    aim to end fights before danger closes in.\r"
+  roleCroatian: "Dalekometni DPS\r"
+  weaknessCroatian: "Ranjiv na brze neprijatelje\r"
+  loreCroatian: "Brzi i budni, strijelci sijaju smrt iz daljine, vjeruju\u0107i svom
+    ni\u0161anu prije nego opasnost stigne blizu.\r"
+  roleSpanish: "DPS a distancia\r"
+  weaknessSpanish: "Vulnerable a enemigos r\xE1pidos\r"
+  loreSpanish: "R\xE1pidos y atentos, los arqueros reparten muerte desde lejos, confiando
+    en su punter\xEDa antes de que el peligro se acerque.\r"

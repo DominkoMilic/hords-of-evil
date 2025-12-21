@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: FireballData
   m_EditorClassIdentifier: 
   manaNeeded: 10
-  damage: 1000
+  damage: 200
   heal: 0
-  range: 2
+  range: 1.5

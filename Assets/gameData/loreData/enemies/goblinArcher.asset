@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c77a9e0bd785e784cb90546d4e29708f, type: 3}
+  m_Name: goblinArcher
+  m_EditorClassIdentifier: 
+  nameEnglish: 'Goblin Archer '
+  nameCroatian: 'Goblin Strijelac '
+  nameSpanish: 'Arquero Goblin '
+  image: {fileID: -4052678597683027472, guid: b621cdeed92733448944f17d52978a91, type: 3}
+  roleEnglish: "Ranged Harasser\r"
+  weaknessEnglish: Fragile in close combat
+  loreEnglish: "Too weak for the front line, these goblins learned early that survival
+    comes from distance and dirty shots.\r"
+  roleCroatian: "Dalekometni uznemiriva\u010D\r"
+  weaknessCroatian: "Vrlo slab u bliskoj borbi\r"
+  loreCroatian: "Preslabi za prvu liniju, ovi goblini nau\u010Dili su da pre\u017Eivljavanje
+    dolazi iz sjene i s distance.\r"
+  roleSpanish: "Hostigador a distancia\r"
+  weaknessSpanish: "Muy d\xE9bil en combate cuerpo a cuerpo\r"
+  loreSpanish: "Demasiado fr\xE1giles para la primera l\xEDnea, estos goblins aprendieron
+    que sobrevivir significa atacar desde las sombras y a distancia.\r"

@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c77a9e0bd785e784cb90546d4e29708f, type: 3}
+  m_Name: goblin
+  m_EditorClassIdentifier: 
+  nameEnglish: Goblin
+  nameCroatian: Goblin
+  nameSpanish: Goblin
+  image: {fileID: 21300000, guid: 7f18cfc774253ca4dbe01ac4df6c5947, type: 3}
+  roleEnglish: Fast Fodder
+  weaknessEnglish: Very low health and armor
+  loreEnglish: "Born hungry and armed with scraps, goblins charge without fear \u2014
+    not because they\u2019re brave, but because they\u2019ve never learned caution."
+  roleCroatian: "Brza pje\u0161adija"
+  weaknessCroatian: Izuzetno malo zdravlja i oklopa
+  loreCroatian: "Gladni od ro\u0111enja i naoru\u017Eani onim \u0161to prona\u0111u,
+    goblini juri\u0161aju bez razmi\u0161ljanja \u2014 ne zbog hrabrosti, ve\u0107
+    zbog potpune nesmotrenosti."
+  roleSpanish: "Infanter\xEDa r\xE1pida"
+  weaknessSpanish: Muy poca vida y armadura
+  loreSpanish: "Hambrientos desde su nacimiento y armados con lo que encuentran,
+    los goblins atacan sin pensar \u2014 no por valent\xEDa, sino por pura imprudencia."

@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c77a9e0bd785e784cb90546d4e29708f, type: 3}
+  m_Name: orcArcher
+  m_EditorClassIdentifier: 
+  nameEnglish: Orc Archer
+  nameCroatian: Orc Strijelac
+  nameSpanish: Arquero Orco
+  image: {fileID: -4052678597683027472, guid: b621cdeed92733448944f17d52978a91, type: 3}
+  roleEnglish: "Backline Damage Dealer\r"
+  weaknessEnglish: "Limited protection when isolated\r"
+  loreEnglish: "Orc archers strike with brutal precision, thinning defenses before
+    the warriors arrive to finish the fight.\r"
+  roleCroatian: "Stra\u017Enji napada\u010D\r"
+  weaknessCroatian: "Slaba obrana kad ostane sam\r"
+  loreCroatian: "Orcski strijelci ga\u0111aju s brutalnom precizno\u0161\u0107u,
+    slabe\u0107i obranu prije nego ratnici krenu u zavr\u0161ni napad.\r"
+  roleSpanish: "Da\xF1o desde retaguardia\r"
+  weaknessSpanish: "Poca protecci\xF3n cuando queda aislado\r"
+  loreSpanish: "Los arqueros orcos disparan con precisi\xF3n brutal, debilitando
+    la defensa antes de que los guerreros entren en combate.\r"

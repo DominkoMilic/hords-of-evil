@@ -17,3 +17,19 @@ public enum Language
     Spanish = 1,
     Croatian = 2
 }
+
+public enum UnitId
+{
+    Goblin,
+    GoblinArcher,
+    HeavyGoblin,
+    OrcWarrior,
+    OrcArcher,
+    OrcShaman,
+    Ogre,
+    OgreCrusher,
+    Swordsman,
+    Spearman,
+    Shieldman,
+    Archer
+}

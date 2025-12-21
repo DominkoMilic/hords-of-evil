@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c77a9e0bd785e784cb90546d4e29708f, type: 3}
+  m_Name: ogreCrusher
+  m_EditorClassIdentifier: 
+  nameEnglish: Ogre Crusher
+  nameCroatian: "Ogar Razara\u010D"
+  nameSpanish: Triturador Ogro
+  image: {fileID: -4052678597683027472, guid: b621cdeed92733448944f17d52978a91, type: 3}
+  roleEnglish: "Lane Destroyer\r"
+  weaknessEnglish: "Extremely slow and costly to support\r"
+  loreEnglish: "When even ogres fail, the crushers march \u2014 bred for war, armored
+    in scars, driven only to destroy.\r"
+  roleCroatian: "Razara\u010D linije\r"
+  weaknessCroatian: "Izuzetno spor i zahtjevan za podr\u0161ku\r"
+  loreCroatian: "Kada ni ogri nisu dovoljni, stupaju razara\u010Di \u2014 stvoreni
+    za rat, prekriveni o\u017Eiljcima i vo\u0111eni samo uni\u0161tenjem.\r"
+  roleSpanish: "Destructor de carril\r"
+  weaknessSpanish: "Extremadamente lento y dif\xEDcil de apoyar\r"
+  loreSpanish: "Cuando ni siquiera los ogros son suficientes, marchan los crushers
+    \u2014 creados para la guerra, cubiertos de cicatrices y movidos solo por la
+    destrucci\xF3n.\r"

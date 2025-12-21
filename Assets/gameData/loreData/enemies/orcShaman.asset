@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c77a9e0bd785e784cb90546d4e29708f, type: 3}
+  m_Name: orcShaman
+  m_EditorClassIdentifier: 
+  nameEnglish: Orc Shaman
+  nameCroatian: "Orc \u0160aman"
+  nameSpanish: "Cham\xE1n Orco"
+  image: {fileID: -4052678597683027472, guid: b621cdeed92733448944f17d52978a91, type: 3}
+  roleEnglish: "Support Caster\r"
+  weaknessEnglish: "Low direct damage and fragile defenses\r"
+  loreEnglish: "Guided by dark spirits, shamans twist the flow of battle, strengthening
+    allies and breaking enemy resolve.\r"
+  roleCroatian: "Podr\u0161ka \u2013 \u010Darobnjak\r"
+  weaknessCroatian: "Mala izravna \u0161teta i krhka obrana\r"
+  loreCroatian: "Vo\u0111eni mra\u010Dnim duhovima, \u0161amani mijenjaju tijek bitke,
+    ja\u010Daju\u0107i saveznike i slome\u0107i volju neprijatelja.\r"
+  roleSpanish: "Lanzador de apoyo\r"
+  weaknessSpanish: "Poco da\xF1o directo y defensas fr\xE1giles\r"
+  loreSpanish: "Guiados por esp\xEDritus oscuros, los chamanes alteran el curso de
+    la batalla, fortaleciendo a sus aliados y quebrando la voluntad enemiga.\r"

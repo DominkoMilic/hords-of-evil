@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c77a9e0bd785e784cb90546d4e29708f, type: 3}
+  m_Name: swordsman
+  m_EditorClassIdentifier: 
+  nameEnglish: Swordsman
+  nameCroatian: "Ma\u010Devalac"
+  nameSpanish: "Espadach\xEDn"
+  image: {fileID: 21300000, guid: 2925284b6afdbb04f874141b58dbbc84, type: 3}
+  roleEnglish: "Balanced Frontliner\r"
+  weaknessEnglish: "Outperformed in specialized roles\r"
+  loreEnglish: "Trained to hold the line, swordsmen are the backbone of the defense
+    \u2014 steady blades, steady hearts.\r"
+  roleCroatian: "Uravnote\u017Eeni prvoborac\r"
+  weaknessCroatian: "Slabiji u specijaliziranim ulogama\r"
+  loreCroatian: "Obu\u010Deni da dr\u017Ee liniju, ma\u010Devaoci su temelj obrane
+    \u2014 pouzdani, postojani i uvijek spremni.\r"
+  roleSpanish: "Combatiente equilibrado\r"
+  weaknessSpanish: "Superado en roles especializados\r"
+  loreSpanish: "Entrenados para mantener la l\xEDnea, los espadachines son el pilar
+    de la defensa \u2014 firmes, fiables y siempre preparados.\r"

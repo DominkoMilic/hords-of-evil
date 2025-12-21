@@ -47,7 +47,7 @@ public class EnemyBaseScript : MonoBehaviour
         switch (Game.SelectedDifficulty)
         {
             case Difficulty.Easy:  return 0.85f;
-            case Difficulty.Hard:  return 1.4f;
+            case Difficulty.Hard:  return 1.2f;
             case Difficulty.Normal:
             default:               return 1f;
         }

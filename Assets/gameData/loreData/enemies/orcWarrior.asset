@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c77a9e0bd785e784cb90546d4e29708f, type: 3}
+  m_Name: orcWarrior
+  m_EditorClassIdentifier: 
+  nameEnglish: Orc Warrior
+  nameCroatian: Orc Ratnik
+  nameSpanish: Guerrero Orco
+  image: {fileID: 21300000, guid: 2a00bc06390aff5499653beb6cafa81f, type: 3}
+  roleEnglish: "Frontline Bruiser\r"
+  weaknessEnglish: "Moderate attack speed\r"
+  loreEnglish: "Raised in endless battle, orc warriors believe strength is the only
+    truth \u2014 and they intend to prove it.\r"
+  roleCroatian: "Prvolinijski borac\r"
+  weaknessCroatian: "Umjerena brzina napada\r"
+  loreCroatian: "Odrasli u neprestanim sukobima, orci vjeruju da je snaga jedini
+    zakon \u2014 i spremni su to dokazati.\r"
+  roleSpanish: "Luchador de primera l\xEDnea\r"
+  weaknessSpanish: "Velocidad de ataque moderada\r"
+  loreSpanish: "Criados en conflictos constantes, los orcos creen que la fuerza es
+    la \xFAnica ley \u2014 y est\xE1n decididos a demostrarlo.\r"
