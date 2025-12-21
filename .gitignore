@@ -1,0 +1,20 @@
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+.utmp/
+.vscode/
+
+# Visual Studio / Rider
+*.csproj
+*.sln
+*.user
+*.userprefs
+.vs/
+
+# OS
+.DS_Store
+Thumbs.db

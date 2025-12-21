@@ -1,0 +1,361 @@
+using UnityEngine;
+using System.Collections.Generic;
+using System.Collections;
+
+
+public class EnemyBaseScript : MonoBehaviour
+{
+    public static List<EnemyBaseScript> allEnemies = new List<EnemyBaseScript>();
+
+    private string enemyName;
+    private int minDamage;
+    private int maxDamage;
+    private int maxHealth;
+    private int currentHealth;
+    private int bounty;
+    private float speed;
+    private float attackSpeed;
+    private int physicalArmor;
+    private int magicArmor;
+    private float attackRange;
+
+    private Vector2 spawnPoint; 
+    private Animator animator;
+    private SpriteRenderer spriteRenderer;
+    public EnemyStats stats;
+    private GameLoop game;
+
+    private bool isAlive = true;
+    private bool isFighting = false;
+
+    private Coroutine attackRoutine;
+
+    private SoldierBaseScript targetSoldier;
+
+    private static readonly float[] ARMOR_REDUCTION =
+    {
+        0.0f,  
+        0.07f, 
+        0.15f, 
+        0.25f  
+    };
+
+    const string PREF_KEY = "SelectedDifficulty";
+
+    private float GetDifficultyMultiplier()
+    {
+        switch (Game.SelectedDifficulty)
+        {
+            case Difficulty.Easy:  return 0.85f;
+            case Difficulty.Hard:  return 1.4f;
+            case Difficulty.Normal:
+            default:               return 1f;
+        }
+    }
+
+    private void ApplyDifficultyScaling()
+    {
+        float m = GetDifficultyMultiplier();
+
+        maxHealth = Mathf.Max(1, Mathf.RoundToInt(maxHealth * m));
+        currentHealth = maxHealth;
+
+        minDamage = Mathf.Max(0, Mathf.RoundToInt(minDamage * m));
+        maxDamage = Mathf.Max(minDamage, Mathf.RoundToInt(maxDamage * m));
+    }
+
+    public void setEnemyName(string newName){
+        enemyName = newName;
+    }
+    
+    public void setMaxHealth(int newMaxHealth) {
+        maxHealth = newMaxHealth;
+    }
+
+    public void setCurrentHealth(int changeHealthBy) {
+        flashColor(changeHealthBy);
+        currentHealth += changeHealthBy;
+    }
+
+    public void setMinDamage(int newMinDamage) {
+        minDamage = newMinDamage;
+    }
+
+    public void setMaxDamage(int newMaxDamage) {
+        maxDamage = newMaxDamage;
+    }
+
+    public void setSpeed(float newSpeed) {
+        speed = newSpeed;
+    }
+
+    public void setAttackSpeed(float newAttackSpeed) {
+        attackSpeed = newAttackSpeed;
+    }
+
+    public void setBounty(int newBounty) {
+        bounty = newBounty;
+    }
+
+    public void setMagicArmor(int newMagicArmor){
+        magicArmor = newMagicArmor;
+    }
+
+    public void setPhysicalArmor(int newPhysicalArmor){
+        physicalArmor = newPhysicalArmor;
+    }
+
+    public void setAttackRange(float newAttackRange){
+        attackRange = newAttackRange;
+    }
+
+    public void setSpawnPoint(Vector2 newSpawnPoint){
+        spawnPoint = newSpawnPoint;
+    }
+
+    public string getEnemyName(){
+        return enemyName;
+    }
+
+    public int getMaxHealth() {
+        return maxHealth;
+    }
+  
+    public int getCurrentHealth() {
+        return currentHealth;
+    }
+
+    public int getMinDamage() {
+        return minDamage;
+    }
+
+    public int getMaxDamage() {
+        return maxDamage;
+    }
+
+    public float getSpeed() {
+        return speed;
+    }
+  
+    public float getAttackSpeed() {
+        return attackSpeed;
+    }
+
+    public int getBounty() {
+        return bounty;
+    }
+
+    public int getPhysicalArmor(){
+        return physicalArmor;
+    }
+
+    public int getMagicArmor(){
+        return magicArmor;
+    }
+
+    public float getAttackRange(){
+        return attackRange;
+    }
+
+    public Vector2 getSpawnPoint(){
+        return spawnPoint;
+    }
+
+    protected virtual void Awake(){
+        if (!allEnemies.Contains(this))
+            allEnemies.Add(this);
+    }
+    
+    virtual public void Initialize()
+    {
+        if(!isAlive) return;
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        game = FindFirstObjectByType<GameLoop>();
+        if(spriteRenderer) spriteRenderer.sortingLayerName = "Characters"; 
+        if(stats){
+            enemyName = stats.enemyName;
+            minDamage = stats.minDamage;
+            maxDamage = stats.maxDamage;
+            maxHealth = stats.maxHealth;
+            currentHealth = stats.maxHealth;
+            bounty = stats.bounty;
+            speed = stats.speed;
+            attackSpeed = stats.attackSpeed;
+            physicalArmor = stats.physicalArmor;
+            magicArmor = stats.magicArmor;
+            attackRange = stats.attackRange;
+
+            ApplyDifficultyScaling();
+        }
+        if (animator && isAlive){ 
+            animator.Play("walk");
+            animator.speed = speed / 1.2f;    
+        } 
+    }
+
+   protected virtual void Update()
+    {
+        if(!isAlive) return;
+
+        if(!isFighting){
+            findClosestSoldier();
+
+            if(targetSoldier) followSoldier();
+            else walkStraightDown();
+        }
+        else{
+            battle();
+        }
+
+        if(isEnemyDead()) enemyDeath();
+    }
+
+    void LateUpdate() {
+        if(!isAlive) return;
+
+        if (spriteRenderer == null)
+            spriteRenderer = GetComponent<SpriteRenderer>();
+
+        spriteRenderer.sortingOrder = Mathf.RoundToInt(-transform.position.y * 100);
+    }
+
+    private void walkStraightDown(){
+        transform.position += Vector3.down * (speed * Time.deltaTime);
+    }
+
+    private void followSoldier(){
+        Vector3 direction = (targetSoldier.transform.position - transform.position).normalized;
+        transform.position += direction * speed * Time.deltaTime;
+
+        battle();
+    }
+
+    private void findClosestSoldier(){
+        float closestDistance = Mathf.Infinity;
+        SoldierBaseScript closest = null;
+
+        foreach (var soldier in SoldierBaseScript.allSoldiers)
+        {
+            if(!soldier) continue;
+
+            float distance = Vector3.Distance(transform.position, soldier.transform.position);
+            if(distance < closestDistance){
+                closestDistance = distance;
+                closest = soldier;
+            }
+
+            targetSoldier = closest ? closest : null;
+        }
+    }
+
+    private void battle(){
+        if(targetSoldier){
+            float distance = Vector3.Distance(targetSoldier.transform.position, transform.position);
+
+            if(distance <= attackRange && attackRoutine == null){
+                isFighting = true;
+                attackRoutine = StartCoroutine(AttackLoop());    
+            }
+            else if(distance > attackRange && attackRoutine != null){
+                StopCoroutine(attackRoutine);
+                attackRoutine = null;
+
+                isFighting = false;
+                animator.Play("walk");
+                animator.speed = speed / 1.2f; 
+            }
+        }
+        else{
+            if(attackRoutine != null){
+                StopCoroutine(attackRoutine);
+                attackRoutine = null;
+            }
+            isFighting = false;
+            animator.Play("walk");
+            animator.speed = speed / 1.2f; 
+        }
+    }
+
+    private IEnumerator AttackLoop(){
+       while (targetSoldier != null)
+        {
+            if(animator){
+                animator.SetTrigger("FightStarted");
+            }
+    
+            dealDamage();
+            yield return new WaitForSeconds(attackSpeed);
+        }
+    
+        attackRoutine = null;
+        isFighting = false;
+        
+        animator.Play("walk");
+        animator.speed = speed / 1.2f;
+    }
+
+    private void dealDamage()
+    {
+        if (targetSoldier == null) return;
+
+        int rawDamage = Random.Range(minDamage, maxDamage + 1);
+
+        int armorTier = targetSoldier.getPhysicalArmor();
+        armorTier = Mathf.Clamp(armorTier, 0, ARMOR_REDUCTION.Length - 1);
+
+        float reduction = ARMOR_REDUCTION[armorTier];
+        int finalDamage = Mathf.RoundToInt(rawDamage * (1f - reduction));
+    
+        finalDamage = Mathf.Max(1, finalDamage);
+
+        targetSoldier.setCurrentHealth(-finalDamage);
+    }
+
+
+    private void flashColor(int takenHealth){
+        if(!spriteRenderer) return; 
+        
+        if(takenHealth >= 0)
+            StartCoroutine(flashColorRoutine(0.6f, 1f, 0.6f));
+        else
+            StartCoroutine(flashColorRoutine(1f, 0.5f, 0.5f));
+    }
+
+    private IEnumerator flashColorRoutine(float r, float g, float b){
+        spriteRenderer.color = new Color(r, g, b);
+        yield return new WaitForSeconds(0.3f);
+        spriteRenderer.color = Color.white;
+    }
+
+    private bool isEnemyDead(){
+        if(getCurrentHealth() > 0 && transform.position.y > -7f && transform.position.y < 13f) return false;
+        else if(transform.position.y < -7f){
+            game.setIsGameOver(true);
+            return true;
+        }
+        else{
+            if(attackRoutine != null) StopCoroutine(attackRoutine);
+            return true;
+        } 
+    }
+
+    private void enemyDeath(){
+        speed = 0f;
+        isAlive = false;
+
+        if(animator) animator.SetTrigger("Die");
+        if(game){
+            game.totalKills++;
+            game.waveEnemyKillCount++;
+            game.updateWaveText(true);
+            game.addCoins(bounty);
+            game.shouldNewWaveDeployChecker();
+        } 
+
+        allEnemies.Remove(this);
+        
+        Destroy(gameObject, 1f);
+    }
+
+}

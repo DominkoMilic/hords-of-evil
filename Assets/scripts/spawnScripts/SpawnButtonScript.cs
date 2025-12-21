@@ -1,0 +1,77 @@
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class SpawnButtonScript : MonoBehaviour
+{
+    public Text[] soldierCostText;
+    public Text[] upgradePriceText;
+    
+    public GameObject soldier;
+    public string soldierName;
+
+    private GameLoop game;
+    private int spawnSoldierId;
+
+    void Start(){
+        game = FindFirstObjectByType<GameLoop>();
+        
+        switch(soldierName){
+            case "Swordsman":
+                spawnSoldierId = 0;
+                break;
+            case "Shieldman":
+                spawnSoldierId = 1;
+                break;
+            case "Spearman":
+                spawnSoldierId = 2;
+                break;
+            case "Mage":
+                spawnSoldierId = 3;
+                break;
+            default:
+                break;
+        }
+        
+        SoldierBaseScript soldierScript = soldier.GetComponent<SoldierBaseScript>();
+        soldierScript.spawnButtonScript = this;
+
+        soldierScript.Initialize();
+
+        if(game){
+            LevelUpgradeData startData = game.getAllsoldiersUpgradeLevel(spawnSoldierId, 0);
+        
+            setSoldierCostText(soldierScript.getCost().ToString(), spawnSoldierId);
+            if(startData)
+                updateUpgradePriceText(startData.upgradePrice.ToString(), spawnSoldierId);
+        }
+    }
+
+    public void setSoldierCostText(string newCost, int soldierId){
+        if(soldierCostText[soldierId])
+            soldierCostText[soldierId].text = newCost;
+    }
+
+    private void updateUpgradePriceText(string newPrice, int soldierId){
+        if(upgradePriceText[soldierId])
+            upgradePriceText[soldierId].text = newPrice;
+    }
+
+    public void upgradeLevelForSoldier(int soldierId){
+        int newLevel = game.getLevelForSoldier(soldierId) + 1;
+        
+        if(newLevel >= 4) return;
+
+        LevelUpgradeData upgradeData = game.getAllsoldiersUpgradeLevel(soldierId, newLevel - 1);
+        LevelUpgradeData upgradeDataForNextLevel = game.getAllsoldiersUpgradeLevel(soldierId, newLevel);
+
+        if(game.getCurrentCoins() >= upgradeData.upgradePrice && newLevel <= 3){
+            game.addCoins(-upgradeData.upgradePrice);
+            game.upgradeLevelForSoldier(soldierId);
+            setSoldierCostText(upgradeData.costPrice.ToString(), soldierId);
+            if(newLevel < 3)
+                updateUpgradePriceText(upgradeDataForNextLevel.upgradePrice.ToString(), soldierId);
+            else updateUpgradePriceText("MAX LEVEL", soldierId);
+        }
+    }
+}
