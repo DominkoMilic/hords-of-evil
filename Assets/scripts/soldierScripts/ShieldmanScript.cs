@@ -49,7 +49,7 @@ public class ShieldmanScript : SoldierBaseScript
 
     private IEnumerator HealLoop()
     {
-        yield return new WaitForSeconds(Random.Range(7f, 10f));
+        yield return new WaitForSeconds(Random.Range(35f, 40f));
 
         while (true)
         {

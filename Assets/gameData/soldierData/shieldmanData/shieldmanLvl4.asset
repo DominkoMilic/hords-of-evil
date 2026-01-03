@@ -15,7 +15,7 @@ MonoBehaviour:
   soldierName: ShieldmanLvl4
   minDamage: 11
   maxDamage: 16
-  maxHealth: 276
+  maxHealth: 174
   cost: 10
   speed: 0.85
   attackSpeed: 0.95

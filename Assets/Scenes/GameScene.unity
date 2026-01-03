@@ -5835,52 +5835,6 @@ MonoBehaviour:
   - {fileID: 1243601879}
   soldier: {fileID: 7424196957535233157, guid: d223490516a01af4abc49d5ed48c8716, type: 3}
   soldierName: Swordsman
---- !u!1 &1997348859
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1997348861}
-  - component: {fileID: 1997348860}
-  m_Layer: 0
-  m_Name: AudioManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1997348860
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1997348859}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91f7de2c1fc4405448fadd88caf565d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  upgradeSound: {fileID: 8300000, guid: 333414f4364b13744bd58ad8798ddcde, type: 3}
-  buttonClickSound: {fileID: 8300000, guid: 0700b8a9e568fab4fb25dbe53dc05ecb, type: 3}
---- !u!4 &1997348861
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1997348859}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.64599, y: -5.54704, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2062911572
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6681,4 +6635,3 @@ SceneRoots:
   - {fileID: 343508624}
   - {fileID: 209782776}
   - {fileID: 1385030860}
-  - {fileID: 1997348861}

@@ -177,6 +177,19 @@ MonoBehaviour:
   allyMask:
     serializedVersion: 2
     m_Bits: 2048
+  stuckCheckInterval: 0.25
+  stuckMoveEpsilon: 0.01
+  stuckTimeToTrigger: 0.6
+  sidestepDuration: 0.7
+  sidestepStrength: 0.8
+  widenSepMultiplier: 1.6
+  widenStrMultiplier: 1.6
+  healRadius: 3.5
+  healPercent: 0.1
+  healCastTime: 0.8
+  projectilePrefab: {fileID: 0}
+  projectileSpawn: {fileID: 0}
+  projectileSprite: {fileID: 0}
 --- !u!58 &3022925168311846176
 CircleCollider2D:
   m_ObjectHideFlags: 0
