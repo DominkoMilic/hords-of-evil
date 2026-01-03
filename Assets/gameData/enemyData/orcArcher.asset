@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: orcArcher
   m_EditorClassIdentifier: 
   enemyName: Orc Archer
-  minDamage: 7
-  maxDamage: 10
-  maxHealth: 90
-  bounty: 7
-  speed: 0.7
-  attackSpeed: 1.25
+  minDamage: 16
+  maxDamage: 23
+  maxHealth: 152
+  bounty: 9
+  speed: 1.1
+  attackSpeed: 1.05
   physicalArmor: 1
   magicArmor: 0
-  attackRange: 3.5
+  attackRange: 5
+  separationRadius: 2
+  separationStrength: 4

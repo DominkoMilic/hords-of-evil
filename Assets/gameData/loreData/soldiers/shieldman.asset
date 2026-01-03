@@ -15,7 +15,7 @@ MonoBehaviour:
   nameEnglish: Shieldman
   nameCroatian: "\u0160titono\u0161a"
   nameSpanish: Escudero
-  image: {fileID: 21300000, guid: 7e4776ec7ceaa5146bf6aa5dc1e891d6, type: 3}
+  image: {fileID: -5139129338197068334, guid: 522a9488ccaf47647b6bd6f966ec842d, type: 3}
   roleEnglish: "Defensive Tank\r"
   weaknessEnglish: "Low damage output\r"
   loreEnglish: "Encased in iron and duty, shieldmen stand where others would fall,

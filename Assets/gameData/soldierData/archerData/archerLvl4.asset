@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: archerLvl4
   m_EditorClassIdentifier: 
   soldierName: ArcherLvl4
-  minDamage: 13
-  maxDamage: 18
-  maxHealth: 105
-  cost: 21
-  speed: 0.95
-  attackSpeed: 0.9
+  minDamage: 15
+  maxDamage: 23
+  maxHealth: 157
+  cost: 11
+  speed: 1.25
+  attackSpeed: 1.15
   physicalArmor: 0
   magicArmor: 1
-  attackRange: 4
+  attackRange: 5
+  separationRadius: 2
+  separationStrength: 4

@@ -14,11 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Goblin
   minDamage: 3
-  maxDamage: 5
-  maxHealth: 40
+  maxDamage: 6
+  maxHealth: 69
   bounty: 3
-  speed: 1.2
-  attackSpeed: 1.15
+  speed: 1.55
+  attackSpeed: 1.1
   physicalArmor: 0
   magicArmor: 0
   attackRange: 1
+  separationRadius: 1
+  separationStrength: 3

@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: orcShaman
   m_EditorClassIdentifier: 
   enemyName: Orc Shaman
-  minDamage: 7
-  maxDamage: 10
-  maxHealth: 85
-  bounty: 9
-  speed: 0.6
-  attackSpeed: 1.6
+  minDamage: 12
+  maxDamage: 18
+  maxHealth: 161
+  bounty: 11
+  speed: 0.7
+  attackSpeed: 0.95
   physicalArmor: 0
-  magicArmor: 3
+  magicArmor: 2
   attackRange: 2.4
+  separationRadius: 2
+  separationStrength: 4

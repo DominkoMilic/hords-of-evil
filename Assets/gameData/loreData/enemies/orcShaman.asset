@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c77a9e0bd785e784cb90546d4e29708f, type: 3}
   m_Name: orcShaman
   m_EditorClassIdentifier: 
-  nameEnglish: Orc Shaman
-  nameCroatian: "Orc \u0160aman"
-  nameSpanish: "Cham\xE1n Orco"
-  image: {fileID: -4052678597683027472, guid: b621cdeed92733448944f17d52978a91, type: 3}
+  nameEnglish: Shaman
+  nameCroatian: "\u0160aman"
+  nameSpanish: "Cham\xE1n"
+  image: {fileID: 7655821307664132786, guid: 256698a988fa34842aac498686bf32c1, type: 3}
   roleEnglish: "Support Caster\r"
   weaknessEnglish: "Low direct damage and fragile defenses\r"
   loreEnglish: "Guided by dark spirits, shamans twist the flow of battle, strengthening

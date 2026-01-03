@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: orc
   m_EditorClassIdentifier: 
   enemyName: Orc
-  minDamage: 8
-  maxDamage: 12
-  maxHealth: 125
+  minDamage: 13
+  maxDamage: 17
+  maxHealth: 202
   bounty: 8
-  speed: 0.5
-  attackSpeed: 1.55
+  speed: 0.95
+  attackSpeed: 0.95
   physicalArmor: 2
-  magicArmor: 1
-  attackRange: 1
+  magicArmor: 2
+  attackRange: 1.1
+  separationRadius: 1
+  separationStrength: 4

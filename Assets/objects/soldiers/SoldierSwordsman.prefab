@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 1491122263028671167}
   - component: {fileID: 4203485938441473954}
   - component: {fileID: 4264965942248766446}
-  m_Layer: 0
+  - component: {fileID: 5783666602517961769}
+  m_Layer: 11
   m_Name: SoldierSwordsman
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,12 +80,12 @@ SpriteRenderer:
   m_SortingLayerID: -2006111707
   m_SortingLayer: 2
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 2925284b6afdbb04f874141b58dbbc84, type: 3}
+  m_Sprite: {fileID: 8401750504432798484, guid: fd62463812a2b8b41b2b2652c1ea40f3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.28, y: 1.5}
+  m_Size: {x: 1.21, y: 1.36}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -100,7 +101,7 @@ Animator:
   m_GameObject: {fileID: 7424196957535233157}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4e2fb0f0a93067543bfade0edd6d0928, type: 2}
+  m_Controller: {fileID: 9100000, guid: 33f97dd6d1522f247aedf24f4cb7102e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -119,7 +120,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7424196957535233157}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -150,8 +151,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.28, y: 1.28}
-    newSize: {x: 1.28, y: 1.5}
+    oldSize: {x: 1.21, y: 1.36}
+    newSize: {x: 1.21, y: 1.36}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -170,4 +171,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1c6b01e45c806d4da3208e3780b0a81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: 434f3c19ea3796b4a831bcc53eccc550, type: 2}
+  game: {fileID: 0}
+  soldierId: 0
+  spawnButtonScript: {fileID: 0}
+  allyMask:
+    serializedVersion: 2
+    m_Bits: 2048
+--- !u!58 &5783666602517961769
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7424196957535233157}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.68

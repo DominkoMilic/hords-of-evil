@@ -15,7 +15,7 @@ MonoBehaviour:
   nameEnglish: Spearman
   nameCroatian: Kopljanik
   nameSpanish: Lancero
-  image: {fileID: 21300000, guid: 3fceaa0b750a58049b3dffca9344be93, type: 3}
+  image: {fileID: 4920153528535472506, guid: a657aecdba6257a429a952be6ed5cea2, type: 3}
   roleEnglish: "High Damage Striker\r"
   weaknessEnglish: "Low health and armor\r"
   loreEnglish: "Disciplined and deadly, spearmen strike from behind allies, turning

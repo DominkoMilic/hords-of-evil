@@ -26,7 +26,7 @@ public class SpawnButtonScript : MonoBehaviour
             case "Spearman":
                 spawnSoldierId = 2;
                 break;
-            case "Mage":
+            case "Archer":
                 spawnSoldierId = 3;
                 break;
             default:

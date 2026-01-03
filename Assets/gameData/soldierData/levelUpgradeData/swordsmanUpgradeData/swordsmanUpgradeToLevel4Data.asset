@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: swordsmanUpgradeToLevel4Data
   m_EditorClassIdentifier: 
   troopName: Swordsman
-  costPrice: 19
-  upgradePrice: 180
+  costPrice: 9
+  upgradePrice: 58

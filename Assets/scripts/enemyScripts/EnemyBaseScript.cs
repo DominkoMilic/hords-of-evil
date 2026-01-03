@@ -18,21 +18,48 @@ public class EnemyBaseScript : MonoBehaviour
     private int physicalArmor;
     private int magicArmor;
     private float attackRange;
+    private float separationRadius;
+    private float separationStrength;
 
     private Vector2 spawnPoint; 
-    private Animator animator;
+    protected Animator animator;
     private SpriteRenderer spriteRenderer;
     public EnemyStats stats;
     private GameLoop game;
 
     private bool isAlive = true;
     private bool isFighting = false;
+    
+    protected bool isCasting = false;
 
     private Coroutine attackRoutine;
 
-    private SoldierBaseScript targetSoldier;
+    protected SoldierBaseScript targetSoldier;
 
-    private static readonly float[] ARMOR_REDUCTION =
+    protected virtual bool UsesAttackReleaseEvent() => false;
+
+    [SerializeField] LayerMask allyMask;
+    Collider2D[] _hits = new Collider2D[16];
+
+    [Header("Stuck handling")]
+    [SerializeField] float stuckCheckInterval = 0.25f;
+    [SerializeField] float stuckMoveEpsilon = 0.01f;   
+    [SerializeField] float stuckTimeToTrigger = 0.6f;  
+    [SerializeField] float sidestepDuration = 0.7f;
+    [SerializeField] float sidestepStrength = 0.8f;
+
+    [SerializeField] float widenSepMultiplier = 1.6f;  
+    [SerializeField] float widenStrMultiplier = 1.6f;
+
+    Vector3 _lastPos;
+    float _sinceLastCheck;
+    float _stuckTimer;
+
+    bool _isSidestepping;
+    float _sidestepTimer;
+    int _sidestepSign; 
+
+    protected static readonly float[] ARMOR_REDUCTION =
     {
         0.0f,  
         0.07f, 
@@ -75,6 +102,7 @@ public class EnemyBaseScript : MonoBehaviour
     public void setCurrentHealth(int changeHealthBy) {
         flashColor(changeHealthBy);
         currentHealth += changeHealthBy;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
     }
 
     public void setMinDamage(int newMinDamage) {
@@ -111,6 +139,14 @@ public class EnemyBaseScript : MonoBehaviour
 
     public void setSpawnPoint(Vector2 newSpawnPoint){
         spawnPoint = newSpawnPoint;
+    }
+
+    public void setSeparationRadius(float newseparationRadius){
+        separationRadius = newseparationRadius;
+    }
+
+    public void setSeparationStrength(float newseparationStrength){
+        separationStrength = newseparationStrength;
     }
 
     public string getEnemyName(){
@@ -161,6 +197,14 @@ public class EnemyBaseScript : MonoBehaviour
         return spawnPoint;
     }
 
+    public float getSeparationRadius(){
+        return separationRadius;
+    }
+
+    public float getSeparationStrength(){
+        return separationStrength;
+    }
+
     protected virtual void Awake(){
         if (!allEnemies.Contains(this))
             allEnemies.Add(this);
@@ -185,6 +229,8 @@ public class EnemyBaseScript : MonoBehaviour
             physicalArmor = stats.physicalArmor;
             magicArmor = stats.magicArmor;
             attackRange = stats.attackRange;
+            separationRadius = stats.separationRadius;
+            separationStrength = stats.separationStrength;
 
             ApplyDifficultyScaling();
         }
@@ -197,6 +243,10 @@ public class EnemyBaseScript : MonoBehaviour
    protected virtual void Update()
     {
         if(!isAlive) return;
+
+        if (isCasting) return;
+
+        UpdateStuckState();
 
         if(!isFighting){
             findClosestSoldier();
@@ -220,16 +270,116 @@ public class EnemyBaseScript : MonoBehaviour
         spriteRenderer.sortingOrder = Mathf.RoundToInt(-transform.position.y * 100);
     }
 
-    private void walkStraightDown(){
-        transform.position += Vector3.down * (speed * Time.deltaTime);
+    void UpdateStuckState()
+    {
+        _sinceLastCheck += Time.deltaTime;
+        if (_sinceLastCheck < stuckCheckInterval) return;
+
+        float moved = Vector3.Distance(transform.position, _lastPos);
+
+        bool wantsToMove = !isFighting; 
+
+        if (wantsToMove && moved < stuckMoveEpsilon)
+            _stuckTimer += _sinceLastCheck;
+        else
+            _stuckTimer = 0f;
+
+        if (!_isSidestepping && _stuckTimer >= stuckTimeToTrigger)
+        {
+            _isSidestepping = true;
+            _sidestepTimer = sidestepDuration;
+            _sidestepSign = (Random.value < 0.5f) ? -1 : 1;
+            _stuckTimer = 0f;
+        }
+
+        _lastPos = transform.position;
+        _sinceLastCheck = 0f;
+
+        if (_isSidestepping)
+        {
+            _sidestepTimer -= stuckCheckInterval;
+            if (_sidestepTimer <= 0f) _isSidestepping = false;
+        }
     }
 
+
+    private void Move(Vector3 desiredDir)
+    {
+        float sepRadius = separationRadius;
+        float sepStrength = separationStrength;
+
+        if (_isSidestepping)
+        {
+            sepRadius *= widenSepMultiplier;
+            sepStrength *= widenStrMultiplier;
+        }
+
+        Vector3 sep = GetSeparation(sepRadius) * sepStrength;
+
+        Vector3 side = Vector3.zero;
+        if (_isSidestepping)
+        {
+            Vector3 perp = new Vector3(-desiredDir.y, desiredDir.x, 0f);
+            side = perp.normalized * (sidestepStrength * _sidestepSign);
+        }
+
+        Vector3 combined = desiredDir + sep + side;
+
+        float mag = combined.magnitude;
+        if (mag > 0.0001f)
+            combined /= Mathf.Max(1f, mag);
+
+        transform.position += combined * speed * Time.deltaTime;
+    }
+
+
+    private void walkStraightDown(){
+       Move(Vector3.down);
+    }
+
+    private Vector3 GetSeparation(float radius)
+    {
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, radius, allyMask);
+        if (hits.Length == 0) return Vector3.zero;
+
+        Vector2 push = Vector2.zero;
+        int contributors = 0;
+
+        foreach (var col in hits)
+        {
+            if (!col) continue;
+            var other = col.GetComponentInParent<EnemyBaseScript>();
+            if (!other || other == this) continue;
+
+            Vector2 toMe = (Vector2)(transform.position - other.transform.position);
+            float d = toMe.magnitude;
+            if (d < 0.0001f) continue;
+
+            float w = 1f - Mathf.Clamp01(d / radius);
+            push += (toMe / d) * w;
+            contributors++;
+        }
+
+        if (contributors == 0) return Vector3.zero;
+        push /= contributors;
+        return (Vector3)push;
+    }
+
+
+
     private void followSoldier(){
-        Vector3 direction = (targetSoldier.transform.position - transform.position).normalized;
-        transform.position += direction * speed * Time.deltaTime;
+        float stopRange = attackRange;
+        float d = Vector3.Distance(transform.position, targetSoldier.transform.position);
+
+        if (d > stopRange)
+        {
+            Vector3 direction = (targetSoldier.transform.position - transform.position).normalized;
+            Move(direction);
+        }
 
         battle();
     }
+
 
     private void findClosestSoldier(){
         float closestDistance = Mathf.Infinity;
@@ -250,6 +400,8 @@ public class EnemyBaseScript : MonoBehaviour
     }
 
     private void battle(){
+        if (isCasting) return;
+
         if(targetSoldier){
             float distance = Vector3.Distance(targetSoldier.transform.position, transform.position);
 
@@ -277,39 +429,77 @@ public class EnemyBaseScript : MonoBehaviour
         }
     }
 
-    private IEnumerator AttackLoop(){
-       while (targetSoldier != null)
+    private IEnumerator AttackLoop()
+    {
+        while (targetSoldier != null)
         {
-            if(animator){
+            if (animator)
                 animator.SetTrigger("FightStarted");
-            }
-    
-            dealDamage();
+
+            if (!UsesAttackReleaseEvent())
+                dealDamage();
+
             yield return new WaitForSeconds(attackSpeed);
         }
-    
+
         attackRoutine = null;
         isFighting = false;
-        
+
         animator.Play("walk");
         animator.speed = speed / 1.2f;
     }
 
-    private void dealDamage()
+    public void OnAttackRelease()
     {
+        if (!isAlive || isCasting) return;
         if (targetSoldier == null) return;
 
+        dealDamage();
+    }
+
+    protected virtual void dealDamage()
+    {
+        if (targetSoldier == null) return;
+        ApplyInstantDamage(targetSoldier);
+    }
+
+    protected int CalculateDamage(SoldierBaseScript soldier)
+    {
         int rawDamage = Random.Range(minDamage, maxDamage + 1);
 
-        int armorTier = targetSoldier.getPhysicalArmor();
-        armorTier = Mathf.Clamp(armorTier, 0, ARMOR_REDUCTION.Length - 1);
+        int armorTier = Mathf.Clamp(soldier.getPhysicalArmor(), 0, ARMOR_REDUCTION.Length - 1);
+        float reduction = ARMOR_REDUCTION[armorTier];
+
+        int finalDamage = Mathf.RoundToInt(rawDamage * (1f - reduction));
+        return Mathf.Max(1, finalDamage);
+    }
+
+    protected void ApplyInstantDamage(SoldierBaseScript soldier)
+    {
+        int dmg = CalculateDamage(soldier);
+        soldier.setCurrentHealth(-dmg);
+    }
+
+    protected int CalculateMagicDamage(SoldierBaseScript soldier)
+    {
+        int rawDamage = Random.Range(getMinDamage(), getMaxDamage() + 1);
+
+        int armorTier = Mathf.Clamp(
+            soldier.getMagicArmor(),
+            0,
+            ARMOR_REDUCTION.Length - 1
+        );
 
         float reduction = ARMOR_REDUCTION[armorTier];
         int finalDamage = Mathf.RoundToInt(rawDamage * (1f - reduction));
-    
-        finalDamage = Mathf.Max(1, finalDamage);
 
-        targetSoldier.setCurrentHealth(-finalDamage);
+        return Mathf.Max(1, finalDamage);
+    }
+
+    protected void ApplyMagicDamageInstant(SoldierBaseScript soldier)
+    {
+        int dmg = CalculateMagicDamage(soldier);
+        soldier.setCurrentHealth(-dmg);
     }
 
 
@@ -327,6 +517,24 @@ public class EnemyBaseScript : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         spriteRenderer.color = Color.white;
     }
+
+    protected void StopCombat()
+    {
+        if (attackRoutine != null)
+        {
+            StopCoroutine(attackRoutine);
+            attackRoutine = null;
+        }
+
+        isFighting = false;
+
+        if (!isCasting && animator)
+        {
+            animator.Play("walk");
+            animator.speed = speed / 1.2f;
+        }
+    }
+
 
     private bool isEnemyDead(){
         if(getCurrentHealth() > 0 && transform.position.y > -7f && transform.position.y < 13f) return false;

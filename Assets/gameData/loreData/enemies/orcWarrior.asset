@@ -15,7 +15,7 @@ MonoBehaviour:
   nameEnglish: Orc Warrior
   nameCroatian: Orc Ratnik
   nameSpanish: Guerrero Orco
-  image: {fileID: 21300000, guid: 2a00bc06390aff5499653beb6cafa81f, type: 3}
+  image: {fileID: 4920153528535472506, guid: ba1a9fe92bff8614784d2ae490f63167, type: 3}
   roleEnglish: "Frontline Bruiser\r"
   weaknessEnglish: "Moderate attack speed\r"
   loreEnglish: "Raised in endless battle, orc warriors believe strength is the only

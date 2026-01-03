@@ -15,7 +15,7 @@ MonoBehaviour:
   nameEnglish: Archer
   nameCroatian: Strijelac
   nameSpanish: Arquero
-  image: {fileID: -4052678597683027472, guid: b621cdeed92733448944f17d52978a91, type: 3}
+  image: {fileID: -776957325500069028, guid: 76fd4c009d0a5e94fbc94b2d25e8da7b, type: 3}
   roleEnglish: "Ranged DPS\r"
   weaknessEnglish: "Vulnerable to fast enemies\r"
   loreEnglish: "Swift and vigilant, archers rain death from afar, trusting their

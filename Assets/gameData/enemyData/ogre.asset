@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: ogre
   m_EditorClassIdentifier: 
   enemyName: Ogre
-  minDamage: 14
-  maxDamage: 20
-  maxHealth: 280
-  bounty: 15
-  speed: 1.1
-  attackSpeed: 1.8
-  physicalArmor: 3
-  magicArmor: 0
-  attackRange: 1
+  minDamage: 20
+  maxDamage: 29
+  maxHealth: 256
+  bounty: 21
+  speed: 0.75
+  attackSpeed: 0.75
+  physicalArmor: 2
+  magicArmor: 2
+  attackRange: 1.2
+  separationRadius: 1.5
+  separationStrength: 4

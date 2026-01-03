@@ -12,19 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c77a9e0bd785e784cb90546d4e29708f, type: 3}
   m_Name: goblinArcher
   m_EditorClassIdentifier: 
-  nameEnglish: 'Goblin Archer '
-  nameCroatian: 'Goblin Strijelac '
-  nameSpanish: 'Arquero Goblin '
-  image: {fileID: -4052678597683027472, guid: b621cdeed92733448944f17d52978a91, type: 3}
+  nameEnglish: Harpoonfish
+  nameCroatian: Riboliki Harpunar
+  nameSpanish: 'Pez Arponero '
+  image: {fileID: 6885502735726166932, guid: dfd992983efc69b49a987eccb79877c0, type: 3}
   roleEnglish: "Ranged Harasser\r"
   weaknessEnglish: Fragile in close combat
-  loreEnglish: "Too weak for the front line, these goblins learned early that survival
-    comes from distance and dirty shots.\r"
+  loreEnglish: "Fragile fish relying on distance and thrown harpoons to survive.\r"
   roleCroatian: "Dalekometni uznemiriva\u010D\r"
   weaknessCroatian: "Vrlo slab u bliskoj borbi\r"
-  loreCroatian: "Preslabi za prvu liniju, ovi goblini nau\u010Dili su da pre\u017Eivljavanje
-    dolazi iz sjene i s distance.\r"
+  loreCroatian: "Krhke ribolike jedinice koje pre\u017Eivljavaju bacanjem harpuna.\r"
   roleSpanish: "Hostigador a distancia\r"
   weaknessSpanish: "Muy d\xE9bil en combate cuerpo a cuerpo\r"
-  loreSpanish: "Demasiado fr\xE1giles para la primera l\xEDnea, estos goblins aprendieron
-    que sobrevivir significa atacar desde las sombras y a distancia.\r"
+  loreSpanish: "Peces fr\xE1giles que dependen de la distancia y sus arpones.\r"

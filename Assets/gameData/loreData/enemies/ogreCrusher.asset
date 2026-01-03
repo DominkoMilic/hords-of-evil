@@ -12,20 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c77a9e0bd785e784cb90546d4e29708f, type: 3}
   m_Name: ogreCrusher
   m_EditorClassIdentifier: 
-  nameEnglish: Ogre Crusher
-  nameCroatian: "Ogar Razara\u010D"
-  nameSpanish: Triturador Ogro
-  image: {fileID: -4052678597683027472, guid: b621cdeed92733448944f17d52978a91, type: 3}
+  nameEnglish: Troll Crusher
+  nameCroatian: "Trol Razara\u010D"
+  nameSpanish: Triturador Troll
+  image: {fileID: -8946714090547424257, guid: 8b4d7dc3e33a9814bb8fb35bcde0acef, type: 3}
   roleEnglish: "Lane Destroyer\r"
   weaknessEnglish: "Extremely slow and costly to support\r"
-  loreEnglish: "When even ogres fail, the crushers march \u2014 bred for war, armored
-    in scars, driven only to destroy.\r"
+  loreEnglish: "Massive brutes bred to smash defenses through sheer destruction.\r"
   roleCroatian: "Razara\u010D linije\r"
   weaknessCroatian: "Izuzetno spor i zahtjevan za podr\u0161ku\r"
-  loreCroatian: "Kada ni ogri nisu dovoljni, stupaju razara\u010Di \u2014 stvoreni
-    za rat, prekriveni o\u017Eiljcima i vo\u0111eni samo uni\u0161tenjem.\r"
+  loreCroatian: "Golemi razara\u010Di stvoreni za uni\u0161tavanje obrana \u010Distom
+    silom.\r"
   roleSpanish: "Destructor de carril\r"
   weaknessSpanish: "Extremadamente lento y dif\xEDcil de apoyar\r"
-  loreSpanish: "Cuando ni siquiera los ogros son suficientes, marchan los crushers
-    \u2014 creados para la guerra, cubiertos de cicatrices y movidos solo por la
-    destrucci\xF3n.\r"
+  loreSpanish: "Bestias enormes creadas para destruir defensas a pura fuerza.\r"

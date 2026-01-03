@@ -19,6 +19,8 @@ public class SoldierBaseScript : MonoBehaviour
     private int magicArmor;
     private float attackRange;
     private int healingPerSecond;
+    private float separationRadius;
+    private float separationStrength;
 
     private Vector2 spawnPoint; 
     private Animator animator;
@@ -27,13 +29,41 @@ public class SoldierBaseScript : MonoBehaviour
     private bool isAlive = true;
     private bool isFighting = false;
 
-    private GameLoop game;
+    public GameLoop game;
+    public int soldierId;
     public SpawnButtonScript spawnButtonScript;
 
     private Coroutine attackRoutine;
-
-    private EnemyBaseScript targetEnemy;
     
+    protected bool isCasting = false;
+
+    protected EnemyBaseScript targetEnemy;
+
+    private bool unregistered;
+    
+    protected virtual bool UsesAttackReleaseEvent() => false;
+    
+    [SerializeField] LayerMask allyMask;
+    Collider2D[] _hits = new Collider2D[16];
+
+    [Header("Stuck handling")]
+    [SerializeField] float stuckCheckInterval = 0.25f;
+    [SerializeField] float stuckMoveEpsilon = 0.01f;   
+    [SerializeField] float stuckTimeToTrigger = 0.6f;  
+    [SerializeField] float sidestepDuration = 0.7f;
+    [SerializeField] float sidestepStrength = 0.8f;
+
+    [SerializeField] float widenSepMultiplier = 1.6f;  
+    [SerializeField] float widenStrMultiplier = 1.6f;
+
+    Vector3 _lastPos;
+    float _sinceLastCheck;
+    float _stuckTimer;
+
+    bool _isSidestepping;
+    float _sidestepTimer;
+    int _sidestepSign; 
+
     private static readonly float[] ARMOR_REDUCTION =
     {
         0.0f,  
@@ -91,6 +121,14 @@ public class SoldierBaseScript : MonoBehaviour
         spawnPoint = newSpawnPoint;
     }
 
+    public void setSeparationRadius(float newseparationRadius){
+        separationRadius = newseparationRadius;
+    }
+
+    public void setSeparationStrength(float newseparationStrength){
+        separationStrength = newseparationStrength;
+    }
+
     public string getSoldierName(){
         return soldierName;
     }
@@ -139,6 +177,14 @@ public class SoldierBaseScript : MonoBehaviour
         return spawnPoint;
     }
 
+    public float getSeparationRadius(){
+        return separationRadius;
+    }
+
+    public float getSeparationStrength(){
+        return separationStrength;
+    }
+
     protected virtual void Awake(){
         if (!allSoldiers.Contains(this))
             allSoldiers.Add(this);
@@ -164,7 +210,7 @@ public class SoldierBaseScript : MonoBehaviour
                 case "Spearman":
                     upgradeSystem(game.getLevelForSoldier(2), 2);
                     break;
-                case "Mage":
+                case "Archer":
                     upgradeSystem(game.getLevelForSoldier(3), 3);
                     break;
                 default:
@@ -190,11 +236,15 @@ public class SoldierBaseScript : MonoBehaviour
         physicalArmor = stats.physicalArmor;
         magicArmor = stats.magicArmor;
         attackRange = stats.attackRange;
+        separationRadius = stats.separationRadius;
+        separationStrength = stats.separationStrength;
     }
 
    protected virtual void Update()
     {
         if(!isAlive) return;
+
+        UpdateStuckState();
 
         if(!isFighting){
             findClosestEnemy();
@@ -218,14 +268,113 @@ public class SoldierBaseScript : MonoBehaviour
         spriteRenderer.sortingOrder = Mathf.RoundToInt(-transform.position.y * 100);
     }
 
-    private void walkStraightUp(){
-        transform.position += Vector3.up * (speed * Time.deltaTime);
+    void UpdateStuckState()
+    {
+        _sinceLastCheck += Time.deltaTime;
+        if (_sinceLastCheck < stuckCheckInterval) return;
+
+        float moved = Vector3.Distance(transform.position, _lastPos);
+
+        bool wantsToMove = !isFighting; 
+
+        if (wantsToMove && moved < stuckMoveEpsilon)
+            _stuckTimer += _sinceLastCheck;
+        else
+            _stuckTimer = 0f;
+
+        if (!_isSidestepping && _stuckTimer >= stuckTimeToTrigger)
+        {
+            _isSidestepping = true;
+            _sidestepTimer = sidestepDuration;
+            _sidestepSign = (Random.value < 0.5f) ? -1 : 1;
+            _stuckTimer = 0f;
+        }
+
+        _lastPos = transform.position;
+        _sinceLastCheck = 0f;
+
+        if (_isSidestepping)
+        {
+            _sidestepTimer -= stuckCheckInterval;
+            if (_sidestepTimer <= 0f) _isSidestepping = false;
+        }
     }
 
+
+    private void Move(Vector3 desiredDir)
+    {
+        float sepRadius = separationRadius;
+        float sepStrength = separationStrength;
+
+        if (_isSidestepping)
+        {
+            sepRadius *= widenSepMultiplier;
+            sepStrength *= widenStrMultiplier;
+        }
+
+        Vector3 sep = GetSeparation(sepRadius) * sepStrength;
+
+        Vector3 side = Vector3.zero;
+        if (_isSidestepping)
+        {
+            Vector3 perp = new Vector3(-desiredDir.y, desiredDir.x, 0f);
+            side = perp.normalized * (sidestepStrength * _sidestepSign);
+        }
+
+        Vector3 combined = desiredDir + sep + side;
+
+        float mag = combined.magnitude;
+        if (mag > 0.0001f)
+            combined /= Mathf.Max(1f, mag);
+
+        transform.position += combined * speed * Time.deltaTime;
+    }
+
+
+    private void walkStraightUp(){
+       Move(Vector3.up);
+    }
+
+   private Vector3 GetSeparation(float radius)
+    {
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, radius, allyMask);
+        if (hits.Length == 0) return Vector3.zero;
+
+        Vector2 push = Vector2.zero;
+        int contributors = 0;
+
+        foreach (var col in hits)
+        {
+            if (!col) continue;
+            var other = col.GetComponentInParent<SoldierBaseScript>();
+            if (!other || other == this) continue;
+
+            Vector2 toMe = (Vector2)(transform.position - other.transform.position);
+            float d = toMe.magnitude;
+            if (d < 0.0001f) continue;
+
+            float w = 1f - Mathf.Clamp01(d / radius);
+            push += (toMe / d) * w;
+            contributors++;
+        }
+
+        if (contributors == 0) return Vector3.zero;
+        push /= contributors;
+        return (Vector3)push;
+    }
+
+
+
     private void followEnemy(){
-        Vector3 direction = (targetEnemy.transform.position - transform.position).normalized;
-        transform.position += direction * speed * Time.deltaTime;
-    
+        float stopRange = attackRange;
+        float d = Vector3.Distance(transform.position, targetEnemy.transform.position);
+
+        if (d > stopRange)
+        {
+            Vector3 direction = (targetEnemy.transform.position - transform.position).normalized;
+            Move(direction);
+        }
+
         battle();
     }
 
@@ -282,7 +431,9 @@ public class SoldierBaseScript : MonoBehaviour
                 animator.SetTrigger("FightStarted");
             }
     
-            dealDamage();
+            if (!UsesAttackReleaseEvent())
+                dealDamage();
+
             yield return new WaitForSeconds(attackSpeed);
         }
     
@@ -293,21 +444,57 @@ public class SoldierBaseScript : MonoBehaviour
         animator.speed = speed / 1.2f;
     }
 
-    private void dealDamage()
+    public void OnAttackRelease()
     {
+        if (!isAlive || isCasting) return;
         if (targetEnemy == null) return;
 
+        dealDamage();
+    }
+
+    protected virtual void dealDamage()
+    {
+        if (targetEnemy == null) return;
+        ApplyInstantDamage(targetEnemy);
+    }
+
+    protected int CalculateDamage(EnemyBaseScript enemy)
+    {
         int rawDamage = Random.Range(minDamage, maxDamage + 1);
 
-        int armorTier = targetEnemy.getPhysicalArmor();
-        armorTier = Mathf.Clamp(armorTier, 0, ARMOR_REDUCTION.Length - 1);
+        int armorTier = Mathf.Clamp(enemy.getPhysicalArmor(), 0, ARMOR_REDUCTION.Length - 1);
+        float reduction = ARMOR_REDUCTION[armorTier];
+
+        int finalDamage = Mathf.RoundToInt(rawDamage * (1f - reduction));
+        return Mathf.Max(1, finalDamage);
+    }
+
+    protected void ApplyInstantDamage(EnemyBaseScript enemy)
+    {
+        int dmg = CalculateDamage(enemy);
+        enemy.setCurrentHealth(-dmg);
+    }
+
+    protected int CalculateMagicDamage(EnemyBaseScript enemy)
+    {
+        int rawDamage = Random.Range(getMinDamage(), getMaxDamage() + 1);
+
+        int armorTier = Mathf.Clamp(
+            enemy.getMagicArmor(),
+            0,
+            ARMOR_REDUCTION.Length - 1
+        );
 
         float reduction = ARMOR_REDUCTION[armorTier];
         int finalDamage = Mathf.RoundToInt(rawDamage * (1f - reduction));
-    
-        finalDamage = Mathf.Max(1, finalDamage);
 
-        targetEnemy.setCurrentHealth(-finalDamage);
+        return Mathf.Max(1, finalDamage);
+    }
+
+    protected void ApplyMagicDamageInstant(EnemyBaseScript enemy)
+    {
+        int dmg = CalculateMagicDamage(enemy);
+        enemy.setCurrentHealth(-dmg);
     }
 
     private void flashColor(int takenHealth){
@@ -362,7 +549,7 @@ public class SoldierBaseScript : MonoBehaviour
             case "spearman":
                 spawnButtonScript.upgradeLevelForSoldier(2);
                 break;
-            case "mage":
+            case "archer":
                 spawnButtonScript.upgradeLevelForSoldier(3);
                 break;
             default:
@@ -381,6 +568,12 @@ public class SoldierBaseScript : MonoBehaviour
         allSoldiers.Remove(this);
 
         game.addMana(1);
+
+        if (!unregistered && game != null)
+        {
+            game.RegisterDeath(soldierId);
+            unregistered = true;
+        }
 
         Destroy(gameObject, 1f);
     }

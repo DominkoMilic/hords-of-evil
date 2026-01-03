@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 300136611242938704}
   - component: {fileID: 1300958490655936218}
   - component: {fileID: 376150106445067417}
-  m_Layer: 0
+  - component: {fileID: 6745782655286999333}
+  m_Layer: 12
   m_Name: EnemyOrc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: -2006111707
   m_SortingLayer: 2
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 2a00bc06390aff5499653beb6cafa81f, type: 3}
+  m_Sprite: {fileID: 4920153528535472506, guid: ba1a9fe92bff8614784d2ae490f63167, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,7 +100,7 @@ Animator:
   m_GameObject: {fileID: 3249920187791055830}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 62581fd494c7ab34294a8af990172fd2, type: 2}
+  m_Controller: {fileID: 9100000, guid: e0de5528a6562ff4dbc762b79bcd502a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -124,3 +125,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 9cc816d7316634942b6805acf81de895, type: 2}
+  allyMask:
+    serializedVersion: 2
+    m_Bits: 4096
+--- !u!58 &6745782655286999333
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3249920187791055830}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: -0.35}
+  m_Radius: 0.555

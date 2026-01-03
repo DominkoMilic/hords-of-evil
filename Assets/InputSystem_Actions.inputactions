@@ -14,15 +14,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "TapPosition",
-                    "type": "Value",
-                    "id": "ef143da4-d886-4808-9e79-232e1470f284",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -45,28 +36,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Tap",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "f5ca97bd-92bc-48c1-9a41-6c39efb9fb08",
-                    "path": "<Touchscreen>/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "TapPosition",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5d0875e2-72a7-45dc-b503-7335e4b25cc6",
-                    "path": "<Mouse>/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "TapPosition",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

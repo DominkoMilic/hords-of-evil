@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: heavyGoblin
   m_EditorClassIdentifier: 
   enemyName: Heavy Goblin
-  minDamage: 5
-  maxDamage: 8
-  maxHealth: 75
+  minDamage: 7
+  maxDamage: 10
+  maxHealth: 136
   bounty: 5
-  speed: 0.8
-  attackSpeed: 1.35
+  speed: 0.9
+  attackSpeed: 0.95
   physicalArmor: 1
-  magicArmor: 0
+  magicArmor: 1
   attackRange: 1
+  separationRadius: 1
+  separationStrength: 3

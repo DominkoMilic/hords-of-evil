@@ -13,4 +13,7 @@ public class EnemyStats : ScriptableObject
     public int physicalArmor;
     public int magicArmor;
     public float attackRange;
+    
+    public float separationRadius;
+    public float separationStrength;
 }

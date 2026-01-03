@@ -12,19 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c77a9e0bd785e784cb90546d4e29708f, type: 3}
   m_Name: heavyGoblin
   m_EditorClassIdentifier: 
-  nameEnglish: Heavy Goblin
-  nameCroatian: "Te\u0161ki Goblin"
-  nameSpanish: Goblin Pesado
-  image: {fileID: 21300000, guid: 5d221094f63b82c44ab604cd36e5448e, type: 3}
+  nameEnglish: Paddlefish
+  nameCroatian: "Riboliki Vesla\u010D"
+  nameSpanish: Pez del Remo
+  image: {fileID: 7353410598784652032, guid: 3f687cda5ca69b44b9671520d67763ef, type: 3}
   roleEnglish: "Early Tank\r\r"
   weaknessEnglish: "Slow and predictable\r"
-  loreEnglish: "Stuffed into stolen armor and driven by stubborn pride, heavy goblins
-    refuse to fall where smaller kin would flee.\r"
+  loreEnglish: "Awkward fighters wielding paddles with reckless determination.\r"
   roleCroatian: "Rani tenk\r"
   weaknessCroatian: "Spor i lako predvidljiv\r"
-  loreCroatian: "Ugurani u ukradeni oklop i vo\u0111eni tvrdoglavim ponosom, te\u0161ki
-    goblini stoje na mjestu gdje bi manji odavno pobjegli.\r"
+  loreCroatian: "Nespretni borci koji veslima napadaju bez razmi\u0161ljanja.\r"
   roleSpanish: "Tanque inicial\r"
   weaknessSpanish: "Lento y predecible\r"
-  loreSpanish: "Cubiertos con armaduras robadas y movidos por un orgullo terco, los
-    goblins pesados resisten donde otros ya habr\xEDan huido.\r"
+  loreSpanish: "Guerreros torpes que luchan con remos y pura terquedad.\r"

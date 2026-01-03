@@ -12,6 +12,8 @@ public class FireballScript : MonoBehaviour
     private float speed = 10f;
     private Vector3 targetPosition;
 
+    private bool hasExploded;
+
     public void Initialize(Vector3 fallPosition){
         damage = fireballData.damage;
         heal = fireballData.heal;
@@ -21,9 +23,12 @@ public class FireballScript : MonoBehaviour
         if (animator) animator.Play("fireballFall");    
     }
 
-    private void Update(){
+    private void Update()
+    {
+        if (hasExploded) return;
         fireballFall(targetPosition);
     }
+
 
     private void fireballFall(Vector3 fallPosition){
         Vector3 direction = (fallPosition - transform.position).normalized;
@@ -34,6 +39,8 @@ public class FireballScript : MonoBehaviour
     }
 
     private void fireballExplosion(Vector3 fallPosition){
+        hasExploded = true;
+
         foreach (var enemy in EnemyBaseScript.allEnemies){
             float distance = Vector3.Distance(fallPosition, enemy.transform.position);
             if(distance <= range) enemy.setCurrentHealth(-damage);

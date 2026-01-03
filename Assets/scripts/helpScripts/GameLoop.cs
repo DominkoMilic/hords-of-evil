@@ -22,6 +22,10 @@ public class GameLoop : MonoBehaviour
     public Button dropFireballButton;
     public GameObject fireball;
     public GameObject fireballSpawner;
+    [SerializeField] private float fireballCooldown = 60f;
+    private float fireballReadyAt = 0f; 
+    [SerializeField] private Image fireballCooldownImage;
+    private float fireballCooldownStartedAt = -1f;
 
     private int currentCoins;
     private int currentWave = 0;          // wave index / counter
@@ -41,18 +45,22 @@ public class GameLoop : MonoBehaviour
     public SoldierStats[] swordsmanStats;
     public SoldierStats[] shieldmanStats;
     public SoldierStats[] spearmanStats;
-    public SoldierStats[] mageStats;
+    public SoldierStats[] archerStats;
 
     private SoldierStats[][] allSoldierStats;
+
+    public int maxSpawnedSoldiersPerType = 15;
+
+    private int[] aliveSoldiersPerType = new int[] { 0, 0, 0, 0 };
 
     public LevelUpgradeData[] swordsmanUpgradeLevels;
     public LevelUpgradeData[] shieldmanUpgradeLevels;
     public LevelUpgradeData[] spearmanUpgradeLevels;
-    public LevelUpgradeData[] mageUpgradeLevels;
+    public LevelUpgradeData[] archerUpgradeLevels;
 
     private LevelUpgradeData[][] allSoldiersUpgradeLevels;
 
-    // swordsman, shieldman, spearman, mage
+    // swordsman, shieldman, spearman, archer
     private int[] levelForSoldier = new int[] { 0, 0, 0, 0 };
 
     void Awake()
@@ -62,7 +70,7 @@ public class GameLoop : MonoBehaviour
             swordsmanUpgradeLevels,
             shieldmanUpgradeLevels,
             spearmanUpgradeLevels,
-            mageUpgradeLevels
+            archerUpgradeLevels
         };
 
         allSoldierStats = new SoldierStats[][]
@@ -70,14 +78,21 @@ public class GameLoop : MonoBehaviour
             swordsmanStats,
             shieldmanStats,
             spearmanStats,
-            mageStats
+            archerStats
         };
 
         input = new InputActions();
+
+        fireballCooldownStartedAt = Time.time;
+        fireballReadyAt = Time.time + fireballCooldown;
+        fireballCooldownImage.fillAmount = 1f;
+        dropFireballButton.interactable = false;
     }
 
-    private bool IsOverUI(Vector2 screenPosition)
+private bool IsOverUI(Vector2 screenPosition)
     {
+        if (EventSystem.current == null) return false;
+
         PointerEventData pointerData = new PointerEventData(EventSystem.current);
         pointerData.position = screenPosition;
 
@@ -90,47 +105,50 @@ public class GameLoop : MonoBehaviour
     private void OnEnable()
     {
         if (input == null)
-        {
             input = new InputActions();
-        }
+
         input.Player.Enable();
-        input.Player.TapPosition.performed += OnTapPosition;
+
+        input.Player.Tap.performed += OnTap;
     }
 
     private void OnDisable()
     {
         if (input == null) return;
-        input.Player.TapPosition.performed -= OnTapPosition;
+
+        input.Player.Tap.performed -= OnTap;
+
         input.Player.Disable();
     }
 
-    private void OnTapPosition(InputAction.CallbackContext context)
+    private void OnTap(InputAction.CallbackContext context)
     {
-        Vector2 screenPos = context.ReadValue<Vector2>();
+        if (!context.performed) return;
+
+        Vector2 screenPos = Pointer.current.position.ReadValue();
 
         if (isFireballSelected && !IsOverUI(screenPos))
         {
-            Vector3 worldPos = Camera.main.ScreenToWorldPoint(screenPos);
-            worldPos.z = 0;
+            if (!IsFireballReady())
+            {
+                isFireballSelected = false;
+                dropFireballButton.GetComponent<Image>().color = Color.white;
+                return;
+            }
 
-            fireballThrowPosition = worldPos;
+            Vector3 worldPos = Camera.main.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, 0f));
+            worldPos.z = 0f;
 
-            dropFireballButton.gameObject.SetActive(false);
-            addMana(-25);
+            GameObject newFireball = Instantiate(fireball, fireballSpawner.transform.position, Quaternion.identity);
+            newFireball.GetComponent<FireballScript>().Initialize(worldPos);
 
-            GameObject newFireball = Instantiate(
-                fireball,
-                fireballSpawner.transform.position,
-                Quaternion.identity
-            );
-
-            FireballScript fireballScript = newFireball.GetComponent<FireballScript>();
-            fireballScript.Initialize(worldPos);
+            StartFireballCooldown();
 
             isFireballSelected = false;
             dropFireballButton.GetComponent<Image>().color = Color.white;
         }
     }
+
 
     void Start()
     {
@@ -325,19 +343,72 @@ public class GameLoop : MonoBehaviour
 
     private Vector3 getScreenTapPosition()
     {
-#if UNITY_EDITOR
-        if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
-        {
-            Vector2 screenPos = Mouse.current.position.ReadValue();
-            return new Vector3(screenPos.x, screenPos.y, 0f);
-        }
-#else
-        if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.wasPressedThisFrame)
-        {
-            Vector2 screenPos = Touchscreen.current.primaryTouch.position.ReadValue();
-            return new Vector3(screenPos.x, screenPos.y, 0f);
-        }
-#endif
+        #if UNITY_EDITOR
+                if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
+                {
+                    Vector2 screenPos = Mouse.current.position.ReadValue();
+                    return new Vector3(screenPos.x, screenPos.y, 0f);
+                }
+        #else
+                if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.wasPressedThisFrame)
+                {
+                    Vector2 screenPos = Touchscreen.current.primaryTouch.position.ReadValue();
+                    return new Vector3(screenPos.x, screenPos.y, 0f);
+                }
+        #endif
         return Vector3.zero;
     }
+
+    public bool CanSpawn(int soldierId)
+    {
+        return aliveSoldiersPerType[soldierId] < maxSpawnedSoldiersPerType;
+    }
+
+    public void RegisterSpawn(int soldierId)
+    {
+        aliveSoldiersPerType[soldierId]++;
+    }
+
+    public void RegisterDeath(int soldierId)
+    {
+        aliveSoldiersPerType[soldierId] = Mathf.Max(0, aliveSoldiersPerType[soldierId] - 1);
+    }
+
+    public int GetAliveCount(int soldierId) => aliveSoldiersPerType[soldierId];
+
+    public bool IsFireballReady()
+    {
+        return Time.time >= fireballReadyAt;
+    }
+
+    public void StartFireballCooldown()
+    {
+        
+        fireballCooldownStartedAt = Time.time;
+        fireballReadyAt = Time.time + fireballCooldown;
+
+        fireballCooldownImage.fillAmount = 1f;
+    }
+
+    private void Update()
+    {
+        dropFireballButton.interactable = IsFireballReady();
+
+        if (fireballCooldownStartedAt < 0f)
+            return;
+
+        float remaining = fireballReadyAt - Time.time;
+
+        if (remaining <= 0f)
+        {
+            fireballCooldownImage.fillAmount = 0f;
+            fireballCooldownStartedAt = -1f;
+            return;
+        }
+
+        fireballCooldownImage.fillAmount = remaining / fireballCooldown;
+    }
+
+
+
 }

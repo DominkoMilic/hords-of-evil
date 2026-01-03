@@ -12,19 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c77a9e0bd785e784cb90546d4e29708f, type: 3}
   m_Name: ogre
   m_EditorClassIdentifier: 
-  nameEnglish: Ogre
-  nameCroatian: Ogar
-  nameSpanish: Ogro
-  image: {fileID: -4052678597683027472, guid: b621cdeed92733448944f17d52978a91, type: 3}
+  nameEnglish: Minotaur
+  nameCroatian: Minotaur
+  nameSpanish: Minotauro
+  image: {fileID: 4811869714284642359, guid: 78921e35c8849e749aa5da44d5faeb83, type: 3}
   roleEnglish: "Siege Unit\r"
   weaknessEnglish: "Very slow movement and attacks\r"
-  loreEnglish: "Slow, towering, and unstoppable, ogres crush defenses with raw power
-    and a lifetime of rage.\r"
+  loreEnglish: "Towering beasts that charge forward with crushing horns.\r"
   roleCroatian: "Opsadna jedinica\r"
   weaknessCroatian: "Izuzetno spor u kretanju i napadu\r"
-  loreCroatian: "Spori, golemi i nemilosrdni, ogri ru\u0161e obrane sirovom snagom
-    i nagomilanim bijesom.\r"
+  loreCroatian: "Goleme zvijeri koje juri\u0161aju razornim rogovima.\r"
   roleSpanish: "Unidad de asedio\r"
   weaknessSpanish: "Movimiento y ataques muy lentos\r"
-  loreSpanish: "Lentos, enormes e implacables, los ogros aplastan defensas con fuerza
-    bruta y una furia acumulada durante a\xF1os.\r"
+  loreSpanish: "Bestias colosales que avanzan embistiendo con cuernos devastadores.\r"

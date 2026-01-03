@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: shieldmanUpgradeToLevel4Data
   m_EditorClassIdentifier: 
   troopName: Shieldman
-  costPrice: 19
-  upgradePrice: 210
+  costPrice: 10
+  upgradePrice: 72

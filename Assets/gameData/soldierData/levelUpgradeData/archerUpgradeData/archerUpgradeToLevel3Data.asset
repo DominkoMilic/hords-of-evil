@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: archerUpgradeToLevel3Data
   m_EditorClassIdentifier: 
   troopName: Archer
-  costPrice: 17
-  upgradePrice: 140
+  costPrice: 10
+  upgradePrice: 62

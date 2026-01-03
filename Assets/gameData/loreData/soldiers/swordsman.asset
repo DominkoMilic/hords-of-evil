@@ -15,7 +15,7 @@ MonoBehaviour:
   nameEnglish: Swordsman
   nameCroatian: "Ma\u010Devalac"
   nameSpanish: "Espadach\xEDn"
-  image: {fileID: 21300000, guid: 2925284b6afdbb04f874141b58dbbc84, type: 3}
+  image: {fileID: 8401750504432798484, guid: fd62463812a2b8b41b2b2652c1ea40f3, type: 3}
   roleEnglish: "Balanced Frontliner\r"
   weaknessEnglish: "Outperformed in specialized roles\r"
   loreEnglish: "Trained to hold the line, swordsmen are the backbone of the defense

@@ -20,6 +20,7 @@ public class MainMenuScript : MonoBehaviour
     public Text weaknessText;
     public Text loreDescriptionText;
     public Text exitLoreText;
+    public Text settingsTitleText;
 
     const string PREF_KEY = "SelectedLanguage";
 
@@ -107,6 +108,7 @@ public class MainMenuScript : MonoBehaviour
         weaknessText.text = weaknessTextOptions[idx] + ":";
         loreDescriptionText.text = loreTextOptions[idx] + ":";
         exitLoreText.text = closeSettingsTextOptions[idx];
+        settingsTitleText.text = settingsTextOptions[idx];
     }
 
     public void handleExitButtonClick(){

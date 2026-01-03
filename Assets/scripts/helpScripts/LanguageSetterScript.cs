@@ -11,6 +11,8 @@ public class LanguageSetterScript : MonoBehaviour
     public Text restartGameOverText;
     public Text exitGameOverText;
 
+    public Text maxSoldiersAmountText;
+
 
     const string PREF_KEY = "SelectedLanguage";
 
@@ -42,6 +44,22 @@ public class LanguageSetterScript : MonoBehaviour
         "Vatra"
     };
 
+    string[] maxSoldiersAmountFormat = new string[]
+    {
+        "Max {0} reached ({1}/{2})",                
+        "Máximo de {0} alcanzado ({1}/{2})",        
+        "Maksimalan broj {0} dostignut ({1}/{2})"   
+    };
+
+    string[][] soldierNamesLocalized =
+    {
+        new string[] { "Swordsman", "Shieldman", "Spearman", "Archer" },
+
+        new string[] { "Espadachín", "Escudero", "Lancero", "Arquero" },
+
+        new string[] { "Mačevalaca", "Štitonoša", "Kopljanika", "Strijelaca" }
+    };
+
     void Start()
     {
         Game.SelectedLanguage = (Language)PlayerPrefs.GetInt(PREF_KEY, (int)Language.English);
@@ -58,6 +76,34 @@ public class LanguageSetterScript : MonoBehaviour
         restartGameOverText.text = restartTextOptions[idx];
         exitGameOverText.text = exitTextOptions[idx];
         fireballText.text = fireballTextOptions[idx];
+        
+        if (maxSoldiersAmountText)
+            maxSoldiersAmountText.gameObject.SetActive(false);
     }
+
+    public string GetSoldierName(int soldierId)
+    {
+        int lang = (int)Game.SelectedLanguage;
+        lang = Mathf.Clamp(lang, 0, soldierNamesLocalized.Length - 1);
+
+        soldierId = Mathf.Clamp(soldierId, 0, soldierNamesLocalized[lang].Length - 1);
+
+        return soldierNamesLocalized[lang][soldierId];
+    }
+
+
+    public string GetMaxSoldiersText(string soldierName, int current, int max)
+    {
+        int idx = (int)Game.SelectedLanguage;
+        idx = Mathf.Clamp(idx, 0, maxSoldiersAmountFormat.Length - 1);
+
+        return string.Format(
+            maxSoldiersAmountFormat[idx],
+            soldierName,
+            current,
+            max
+        );
+    }
+
 
 }

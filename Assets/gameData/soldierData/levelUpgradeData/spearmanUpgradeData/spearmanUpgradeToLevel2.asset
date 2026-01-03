@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: spearmanUpgradeToLevel2
   m_EditorClassIdentifier: 
   troopName: Spearman
-  costPrice: 14
-  upgradePrice: 70
+  costPrice: 8
+  upgradePrice: 51
