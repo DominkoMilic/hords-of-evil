@@ -16,7 +16,7 @@ MonoBehaviour:
   minDamage: 32
   maxDamage: 43
   maxHealth: 396
-  bounty: 32
+  bounty: 33
   speed: 0.7
   attackSpeed: 0.7
   physicalArmor: 3
