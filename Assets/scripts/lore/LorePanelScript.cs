@@ -79,6 +79,8 @@ public class LorePanelScript : MonoBehaviour
         if (unitOrder == null || unitOrder.Length == 0) return;
         index = (index + 1) % unitOrder.Length;
         Refresh();
+
+        PlaySoundEffect();
     }
 
     public void Prev()
@@ -87,6 +89,15 @@ public class LorePanelScript : MonoBehaviour
         index--;
         if (index < 0) index = unitOrder.Length - 1;
         Refresh();
+
+        PlaySoundEffect();
+    }
+
+    private void PlaySoundEffect(){
+        if (AudioManagerScript.Instance != null)
+        {
+            AudioManagerScript.Instance.PlayButtonClick();
+        }
     }
 
     private void Refresh()

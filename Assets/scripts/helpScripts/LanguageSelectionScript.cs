@@ -69,13 +69,26 @@ public class LanguageSelectionScript : MonoBehaviour
 
     public void handleEnglishButtonClick(){
         Apply(Language.English);
+
+        PlaySoundEffect();
     }
 
     public void handleSpanishButtonClick(){
         Apply(Language.Spanish);
+
+        PlaySoundEffect();
     }
 
     public void handleCroatianhButtonClick(){
         Apply(Language.Croatian);
+
+        PlaySoundEffect();
+    }
+
+    private void PlaySoundEffect(){
+        if (AudioManagerScript.Instance != null)
+        {
+            AudioManagerScript.Instance.PlayButtonClick();
+        }
     }
 }

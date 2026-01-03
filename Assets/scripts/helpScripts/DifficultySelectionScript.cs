@@ -55,13 +55,26 @@ public class DifficultySelectionScript : MonoBehaviour
 
     public void handleEasyButtonClick(){
         Apply(Difficulty.Easy);
+
+        PlaySoundEffect();
     }
 
     public void handleNormalButtonClick(){
         Apply(Difficulty.Normal);
+
+        PlaySoundEffect();
     }
 
     public void handleHardButtonClick(){
         Apply(Difficulty.Hard);
+
+        PlaySoundEffect();
+    }
+
+    private void PlaySoundEffect(){
+        if (AudioManagerScript.Instance != null)
+        {
+            AudioManagerScript.Instance.PlayButtonClick();
+        }
     }
 }

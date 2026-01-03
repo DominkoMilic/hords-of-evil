@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelNumber: 100
   totalWaveNumber: 0
-  startCoins: 27
+  startCoins: 2700
   waves:
   - {fileID: 11400000, guid: 7b2a69ea8627ab44ca5e5c074dfd7c51, type: 2}

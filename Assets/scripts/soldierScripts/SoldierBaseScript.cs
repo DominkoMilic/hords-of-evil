@@ -524,38 +524,48 @@ public class SoldierBaseScript : MonoBehaviour
         }
     }
 
-    public void upgradeSoldier(string selectedSoldier){
+    public void upgradeSoldier(string selectedSoldier)
+    {
         game = FindFirstObjectByType<GameLoop>();
+        if (!game) return;
 
-        if(!game) return;
-
-        if(game.getIsFireballSelected()){
+        if (game.getIsFireballSelected())
+        {
             game.setIsFireballSelected(false);
             game.dropFireballButton.GetComponent<Image>().color = Color.white;
         }
 
         spawnButtonScript = FindFirstObjectByType<SpawnButtonScript>();
-        
-        if(!spawnButtonScript) return;
-        
+        if (!spawnButtonScript) return;
+
+        bool upgraded = false;
+
         switch (selectedSoldier)
         {
             case "swordsman":
-               spawnButtonScript.upgradeLevelForSoldier(0); 
+                spawnButtonScript.upgradeLevelForSoldier(0);
+                upgraded = true;
                 break;
             case "shieldman":
                 spawnButtonScript.upgradeLevelForSoldier(1);
+                upgraded = true;
                 break;
             case "spearman":
                 spawnButtonScript.upgradeLevelForSoldier(2);
+                upgraded = true;
                 break;
             case "archer":
                 spawnButtonScript.upgradeLevelForSoldier(3);
-                break;
-            default:
+                upgraded = true;
                 break;
         }
+
+        if (upgraded && AudioManagerScript.Instance != null)
+        {
+            AudioManagerScript.Instance.PlayUpgrade();
+        }
     }
+
 
     private void soldierDeath(){
         speed = 0f;

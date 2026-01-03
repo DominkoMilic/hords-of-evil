@@ -113,33 +113,56 @@ public class MainMenuScript : MonoBehaviour
 
     public void handleExitButtonClick(){
         Application.Quit();
+
+        PlaySoundEffect();
     }
 
     public void handleInfintyGameModeButtonClick(){
         SceneManager.LoadScene("GameScene");
+
+        PlaySoundEffect();
     }
 
     public void handleLanguageButtonClick(){
         languagePanel.SetActive(true);
+
+        PlaySoundEffect();
     }
 
     public void handleDifficultyButtonClick(){
         difficultyPanel.SetActive(true);
+
+        PlaySoundEffect();
     }
 
     public void handleSettingsButtonClick(){
         settingsPanel.SetActive(true);
+
+        PlaySoundEffect();
     }
 
     public void handleLoreButtonClick(){
         lorePanel.SetActive(true);
+
+        PlaySoundEffect();
     }
 
     public void handleCloseSettingsPanelButtonClick(){
         settingsPanel.SetActive(false);
+
+        PlaySoundEffect();
     }
 
     public void handleCloseLorePanelButtonClick(){
         lorePanel.SetActive(false);
+
+        PlaySoundEffect();
+    }
+
+    private void PlaySoundEffect(){
+        if (AudioManagerScript.Instance != null)
+        {
+            AudioManagerScript.Instance.PlayButtonClick();
+        }
     }
 }

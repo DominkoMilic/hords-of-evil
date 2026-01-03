@@ -13,6 +13,8 @@ public class handleGameLoopButtonClicksScript : MonoBehaviour
         backgroundMusic.GetComponent<AudioSource>().mute = true;
         pausePanel.SetActive(true);
         Time.timeScale = 0f;
+
+        PlaySoundEffect();
     }
 
     public void handleResumeGameClick(){
@@ -20,6 +22,8 @@ public class handleGameLoopButtonClicksScript : MonoBehaviour
         pausePanel.SetActive(false);
         Time.timeScale = 1f;
         backgroundMusic.GetComponent<AudioSource>().mute = false;
+    
+        PlaySoundEffect();
     }
 
     public void handleRestartGameClick(){
@@ -29,11 +33,22 @@ public class handleGameLoopButtonClicksScript : MonoBehaviour
         SoldierBaseScript.allSoldiers?.Clear();
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    
+        PlaySoundEffect();
     }
 
     public void handleExitButtonClick(){
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenuScene");
+        
+        PlaySoundEffect();
+    }
+
+    private void PlaySoundEffect(){
+        if (AudioManagerScript.Instance != null)
+        {
+            AudioManagerScript.Instance.PlayButtonClick();
+        }
     }
 
 }
