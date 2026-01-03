@@ -13,7 +13,6 @@ public class MainMenuScript : MonoBehaviour
     public Text exitText;
     public Text languageText;
     public Text difficultyText;
-    public Text loreText;
     public Text settingsText;
     public Text closeSettingsText;
     public Text roleText;
@@ -21,6 +20,7 @@ public class MainMenuScript : MonoBehaviour
     public Text loreDescriptionText;
     public Text exitLoreText;
     public Text settingsTitleText;
+    public Text loreButtonText;
 
     const string PREF_KEY = "SelectedLanguage";
 
@@ -101,7 +101,6 @@ public class MainMenuScript : MonoBehaviour
         exitText.text = exitTextOptions[idx];
         languageText.text = languageTextOptions[idx];
         difficultyText.text = difficultyTextOptions[idx];
-        loreText.text = loreTextOptions[idx];
         settingsText.text = settingsTextOptions[idx];
         closeSettingsText.text = closeSettingsTextOptions[idx];
         roleText.text = roleTextOptions[idx] + ":";
@@ -109,6 +108,7 @@ public class MainMenuScript : MonoBehaviour
         loreDescriptionText.text = loreTextOptions[idx] + ":";
         exitLoreText.text = closeSettingsTextOptions[idx];
         settingsTitleText.text = settingsTextOptions[idx];
+        loreButtonText.text = loreTextOptions[idx];
     }
 
     public void handleExitButtonClick(){

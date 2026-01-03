@@ -12,19 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c77a9e0bd785e784cb90546d4e29708f, type: 3}
   m_Name: shieldman
   m_EditorClassIdentifier: 
-  nameEnglish: Shieldman
-  nameCroatian: "\u0160titono\u0161a"
-  nameSpanish: Escudero
+  nameEnglish: Healer
+  nameCroatian: Iscjeljitelj
+  nameSpanish: Sanador
   image: {fileID: -5139129338197068334, guid: 522a9488ccaf47647b6bd6f966ec842d, type: 3}
-  roleEnglish: "Defensive Tank\r"
-  weaknessEnglish: "Low damage output\r"
-  loreEnglish: "Encased in iron and duty, shieldmen stand where others would fall,
-    buying time with blood and steel.\r"
-  roleCroatian: "Obrambeni tenk\r"
-  weaknessCroatian: "Slaba napada\u010Dka mo\u0107\r"
-  loreCroatian: "Okovani \u010Delikom i du\u017Eno\u0161\u0107u, \u0161titono\u0161e
-    stoje ondje gdje bi drugi pali, kupuju\u0107i vrijeme vlastitim \u017Eivotima.\r"
-  roleSpanish: "Tanque defensivo\r"
+  roleEnglish: Support Healer
+  weaknessEnglish: Weak in 1v1
+  loreEnglish: "Healers sustain allies, avoiding combat whenever possible.\r"
+  roleCroatian: "Podr\u0161ka \u2013 iscjeljivanje"
+  weaknessCroatian: Slab u 1 na 1
+  loreCroatian: "Iscjelitelji odr\u017Eavaju saveznike, izbjegavaju\u0107i borbu.\r"
+  roleSpanish: "D\xE9bil en 1 contra 1"
   weaknessSpanish: "Bajo da\xF1o\r"
-  loreSpanish: "Cubiertos de acero y deber, los escuderos permanecen donde otros
-    caer\xEDan, ganando tiempo con su propia vida.\r"
+  loreSpanish: "Los sanadores mantienen a sus aliados, evitando el combate.\r"
