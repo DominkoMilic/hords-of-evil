@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 76c24aad89f13284c8d48731d9c0d3c3
+guid: b5e4c8e180950814a9749cc751ef557a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2398820548321204046
-    second: Monk19_0
+      213: 5788854487086541454
+    second: Monk9_0
   - first:
-      213: -7408901151183790698
-    second: Monk19_1
+      213: 8308507489322029222
+    second: Monk9_1
   - first:
-      213: 6995475281673840666
-    second: Monk19_2
+      213: 3381855973305864932
+    second: Monk9_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -132,7 +132,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Monk19_0
+      name: Monk9_0
       rect:
         serializedVersion: 2
         x: 71
@@ -147,14 +147,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e47d79644925a4120800000000000000
-      internalID: 2398820548321204046
+      spriteID: e8a283f3c74265050800000000000000
+      internalID: 5788854487086541454
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Monk19_1
+      name: Monk9_1
       rect:
         serializedVersion: 2
         x: 77
@@ -169,14 +169,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 69d15b338ab4e2990800000000000000
-      internalID: -7408901151183790698
+      spriteID: 6a056ba8a8fbd4370800000000000000
+      internalID: 8308507489322029222
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Monk19_2
+      name: Monk9_2
       rect:
         serializedVersion: 2
         x: 199
@@ -191,8 +191,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a18e13f74bbe41160800000000000000
-      internalID: 6995475281673840666
+      spriteID: 4e2dd620714ceee20800000000000000
+      internalID: 3381855973305864932
       vertices: []
       indices: 
       edges: []
@@ -211,9 +211,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Monk19_0: 2398820548321204046
-      Monk19_1: -7408901151183790698
-      Monk19_2: 6995475281673840666
+      Monk9_0: 5788854487086541454
+      Monk9_1: 8308507489322029222
+      Monk9_2: 3381855973305864932
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

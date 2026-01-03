@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: b31e941a7de526f48acd4a2553d08458
+guid: a391a44120bbcff4081c0dd60b4b0374
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3020102530428676400
-    second: Monk20_0
+      213: 6045833895966898095
+    second: Monk3_0
   - first:
-      213: 4041824364737047222
-    second: Monk20_1
+      213: 5289042114919460315
+    second: Monk3_1
   - first:
-      213: 7327615309255102248
-    second: Monk20_2
+      213: 1227658051115129176
+    second: Monk3_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -132,11 +132,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Monk20_0
+      name: Monk3_0
       rect:
         serializedVersion: 2
-        x: 71
-        y: 155
+        x: 67
+        y: 140
         width: 11
         height: 11
       alignment: 0
@@ -147,19 +147,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0d65a80ffb07616d0800000000000000
-      internalID: -3020102530428676400
+      spriteID: fa77f1c65ed17e350800000000000000
+      internalID: 6045833895966898095
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Monk20_1
+      name: Monk3_1
       rect:
         serializedVersion: 2
-        x: 91
+        x: 77
         y: 86
-        width: 110
+        width: 136
         height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -169,18 +169,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6baaba068d1771830800000000000000
-      internalID: 4041824364737047222
+      spriteID: bddeadde7c3766940800000000000000
+      internalID: 5289042114919460315
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Monk20_2
+      name: Monk3_2
       rect:
         serializedVersion: 2
-        x: 203
-        y: 162
+        x: 209
+        y: 147
         width: 11
         height: 11
       alignment: 0
@@ -191,8 +191,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 82f4dd6ec4be0b560800000000000000
-      internalID: 7327615309255102248
+      spriteID: 8599d5a3e74890110800000000000000
+      internalID: 1227658051115129176
       vertices: []
       indices: 
       edges: []
@@ -211,9 +211,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Monk20_0: -3020102530428676400
-      Monk20_1: 4041824364737047222
-      Monk20_2: 7327615309255102248
+      Monk3_0: 6045833895966898095
+      Monk3_1: 5289042114919460315
+      Monk3_2: 1227658051115129176
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

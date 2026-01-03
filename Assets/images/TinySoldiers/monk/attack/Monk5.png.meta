@@ -1,16 +1,22 @@
 fileFormatVersion: 2
-guid: 43bd2e137b4119249aee7a8ceb1c4c49
+guid: 9f2810d73fc640e4b896f2607beabaad
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2948931847836193540
-    second: Monk14_0
+      213: 3616840529494033612
+    second: Monk5_0
   - first:
-      213: 6690301327655325474
-    second: Monk14_1
+      213: 6051367971140721619
+    second: Monk5_1
   - first:
-      213: -966891296826690104
-    second: Monk14_2
+      213: 1715512043758336903
+    second: Monk5_2
+  - first:
+      213: 4881464213565094097
+    second: Monk5_3
+  - first:
+      213: -1160330184849182715
+    second: Monk5_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -132,13 +138,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Monk14_0
+      name: Monk5_0
       rect:
         serializedVersion: 2
-        x: 61
-        y: 141
-        width: 30
-        height: 25
+        x: 55
+        y: 144
+        width: 15
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,20 +153,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 403dc1934e5bce820800000000000000
-      internalID: 2948931847836193540
+      spriteID: cc44ab97c49913230800000000000000
+      internalID: 3616840529494033612
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Monk14_1
+      name: Monk5_1
       rect:
         serializedVersion: 2
-        x: 77
+        x: 70
         y: 86
-        width: 134
-        height: 98
+        width: 147
+        height: 99
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -169,20 +175,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 22f483b5c99b8dc50800000000000000
-      internalID: 6690301327655325474
+      spriteID: 3dbd405bb17caf350800000000000000
+      internalID: 6051367971140721619
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Monk14_2
+      name: Monk5_2
       rect:
         serializedVersion: 2
-        x: 196
-        y: 149
-        width: 30
-        height: 24
+        x: 209
+        y: 144
+        width: 11
+        height: 11
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -191,8 +197,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8c57a340d79e492f0800000000000000
-      internalID: -966891296826690104
+      spriteID: 78bbe185d19bec710800000000000000
+      internalID: 1715512043758336903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Monk5_3
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 152
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d83451d6d17eb340800000000000000
+      internalID: 4881464213565094097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Monk5_4
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 137
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 500b6e538dda5efe0800000000000000
+      internalID: -1160330184849182715
       vertices: []
       indices: 
       edges: []
@@ -211,9 +261,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Monk14_0: 2948931847836193540
-      Monk14_1: 6690301327655325474
-      Monk14_2: -966891296826690104
+      Monk5_0: 3616840529494033612
+      Monk5_1: 6051367971140721619
+      Monk5_2: 1715512043758336903
+      Monk5_3: 4881464213565094097
+      Monk5_4: -1160330184849182715
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

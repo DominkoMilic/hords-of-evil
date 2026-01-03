@@ -23,7 +23,7 @@ public class SoldierBaseScript : MonoBehaviour
     private float separationStrength;
 
     private Vector2 spawnPoint; 
-    private Animator animator;
+    protected Animator animator;
     private SpriteRenderer spriteRenderer;
     
     private bool isAlive = true;
@@ -363,8 +363,6 @@ public class SoldierBaseScript : MonoBehaviour
         return (Vector3)push;
     }
 
-
-
     private void followEnemy(){
         float stopRange = attackRange;
         float d = Vector3.Distance(transform.position, targetEnemy.transform.position);
@@ -456,6 +454,23 @@ public class SoldierBaseScript : MonoBehaviour
     {
         if (targetEnemy == null) return;
         ApplyInstantDamage(targetEnemy);
+    }
+    
+    protected void StopCombat()
+    {
+        if (attackRoutine != null)
+        {
+            StopCoroutine(attackRoutine);
+            attackRoutine = null;
+        }
+
+        isFighting = false;
+
+        if (!isCasting && animator)
+        {
+            animator.Play("walk");
+            animator.speed = speed / 1.2f;
+        }
     }
 
     protected int CalculateDamage(EnemyBaseScript enemy)

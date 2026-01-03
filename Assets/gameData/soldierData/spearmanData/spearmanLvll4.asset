@@ -22,5 +22,5 @@ MonoBehaviour:
   physicalArmor: 2
   magicArmor: 1
   attackRange: 1.3
-  separationRadius: 1.3
-  separationStrength: 5
+  separationRadius: 1.2
+  separationStrength: 4
