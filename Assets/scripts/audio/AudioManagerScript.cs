@@ -7,6 +7,8 @@ public class AudioManagerScript : MonoBehaviour
     [Header("SFX")]
     public AudioClip upgradeSound;
     public AudioClip buttonClickSound;
+    public AudioClip swordDrawSound;
+    public AudioClip hornBlowSound;
 
     private AudioSource audioSource;
 
@@ -32,5 +34,15 @@ public class AudioManagerScript : MonoBehaviour
     public void PlayButtonClick()
     {
         audioSource.PlayOneShot(buttonClickSound);
+    }
+
+    public void PlaySwordDraw()
+    {
+        audioSource.PlayOneShot(swordDrawSound);
+    }
+
+    public void PlayHornBlow()
+    {
+        audioSource.PlayOneShot(hornBlowSound);
     }
 }

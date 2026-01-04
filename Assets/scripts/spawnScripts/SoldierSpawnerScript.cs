@@ -12,6 +12,9 @@ public class SoldierSpawnerScript : MonoBehaviour
     private LanguageSetterScript languageSetter;
     private Coroutine maxTextRoutine;
 
+    [SerializeField] private float soundCooldown = 7f;
+    private float lastSoundTime = -Mathf.Infinity;
+
     private void Start()
     {
         languageSetter = FindFirstObjectByType<LanguageSetterScript>();
@@ -49,6 +52,8 @@ public class SoldierSpawnerScript : MonoBehaviour
             return;
         }
 
+        TryPlaySpawnSound();
+
         game.RegisterSpawn(soldierId);
         game.addCoins(-cost);
     }
@@ -79,5 +84,29 @@ public class SoldierSpawnerScript : MonoBehaviour
         if (maxSoldiersAmountText)
             maxSoldiersAmountText.gameObject.SetActive(false);
         maxTextRoutine = null;
+    }
+
+    private void playSoundEffect()
+    {
+        if (AudioManagerScript.Instance == null)
+            return;
+
+        System.Action[] sounds =
+        {
+            AudioManagerScript.Instance.PlaySwordDraw,
+            AudioManagerScript.Instance.PlayHornBlow
+        };
+
+        int randomIndex = Random.Range(0, sounds.Length);
+        sounds[randomIndex].Invoke();
+    }
+
+    private void TryPlaySpawnSound()
+    {
+        if (Time.time - lastSoundTime < soundCooldown)
+            return;
+
+        playSoundEffect();
+        lastSoundTime = Time.time;
     }
 }

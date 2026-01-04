@@ -49,7 +49,7 @@ public class ShieldmanScript : SoldierBaseScript
 
     private IEnumerator HealLoop()
     {
-        yield return new WaitForSeconds(Random.Range(35f, 40f));
+        yield return new WaitForSeconds(Random.Range(25f, 30f));
 
         while (true)
         {
@@ -65,7 +65,7 @@ public class ShieldmanScript : SoldierBaseScript
 
             isCasting = false;
 
-            yield return new WaitForSeconds(Random.Range(7f, 10f));
+            yield return new WaitForSeconds(Random.Range(25f, 30f));
         }
     }
 

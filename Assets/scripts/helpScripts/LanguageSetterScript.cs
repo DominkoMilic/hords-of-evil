@@ -53,11 +53,11 @@ public class LanguageSetterScript : MonoBehaviour
 
     string[][] soldierNamesLocalized =
     {
-        new string[] { "Swordsman", "Shieldman", "Spearman", "Archer" },
+        new string[] { "Swordsman", "Healer", "Spearman", "Archer" },
 
-        new string[] { "Espadachín", "Escudero", "Lancero", "Arquero" },
+        new string[] { "Espadachín", "Sanador", "Lancero", "Arquero" },
 
-        new string[] { "Mačevalaca", "Štitonoša", "Kopljanika", "Strijelaca" }
+        new string[] { "Mačevalaca", "Iscjeljitelja", "Kopljanika", "Strijelaca" }
     };
 
     void Start()

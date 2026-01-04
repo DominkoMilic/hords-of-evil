@@ -244,6 +244,8 @@ public class SoldierBaseScript : MonoBehaviour
     {
         if(!isAlive) return;
 
+        if (isCasting) return;
+
         UpdateStuckState();
 
         if(!isFighting){
@@ -395,6 +397,8 @@ public class SoldierBaseScript : MonoBehaviour
     }
 
     private void battle(){
+        if (isCasting) return;
+
         if(targetEnemy){
             float distance = Vector3.Distance(targetEnemy.transform.position, transform.position);
 
@@ -553,31 +557,20 @@ public class SoldierBaseScript : MonoBehaviour
         spawnButtonScript = FindFirstObjectByType<SpawnButtonScript>();
         if (!spawnButtonScript) return;
 
-        bool upgraded = false;
-
         switch (selectedSoldier)
         {
             case "swordsman":
                 spawnButtonScript.upgradeLevelForSoldier(0);
-                upgraded = true;
                 break;
             case "shieldman":
                 spawnButtonScript.upgradeLevelForSoldier(1);
-                upgraded = true;
                 break;
             case "spearman":
                 spawnButtonScript.upgradeLevelForSoldier(2);
-                upgraded = true;
                 break;
             case "archer":
                 spawnButtonScript.upgradeLevelForSoldier(3);
-                upgraded = true;
                 break;
-        }
-
-        if (upgraded && AudioManagerScript.Instance != null)
-        {
-            AudioManagerScript.Instance.PlayUpgrade();
         }
     }
 

@@ -6,6 +6,10 @@ public class SpawnButtonScript : MonoBehaviour
 {
     public Text[] soldierCostText;
     public Text[] upgradePriceText;
+
+    //swordsman, shieldman, spearman, archer
+    public Image[] upgradeIcons;
+    public Image[] goldIcons;
     
     public GameObject soldier;
     public string soldierName;
@@ -55,6 +59,9 @@ public class SpawnButtonScript : MonoBehaviour
     private void updateUpgradePriceText(string newPrice, int soldierId){
         if(upgradePriceText[soldierId])
             upgradePriceText[soldierId].text = newPrice;
+        if(newPrice == "MAX"){
+            upgradePriceText[soldierId].color = new Color32(180, 140, 40, 255);
+        }
     }
 
     public void upgradeLevelForSoldier(int soldierId){
@@ -69,9 +76,30 @@ public class SpawnButtonScript : MonoBehaviour
             game.addCoins(-upgradeData.upgradePrice);
             game.upgradeLevelForSoldier(soldierId);
             setSoldierCostText(upgradeData.costPrice.ToString(), soldierId);
+
+            if (AudioManagerScript.Instance != null)
+            {
+                AudioManagerScript.Instance.PlayUpgrade();
+            }
+
             if(newLevel < 3)
                 updateUpgradePriceText(upgradeDataForNextLevel.upgradePrice.ToString(), soldierId);
-            else updateUpgradePriceText("MAX LEVEL", soldierId);
+            else
+            {
+                updateUpgradePriceText("MAX", soldierId);
+                SetUpgradeUIVisible(soldierId, false);
+            }
+
         }
     }
+
+    private void SetUpgradeUIVisible(int soldierId, bool visible)
+    {
+        if (upgradeIcons != null && soldierId >= 0 && soldierId < upgradeIcons.Length && upgradeIcons[soldierId] != null)
+            upgradeIcons[soldierId].gameObject.SetActive(visible);
+
+        if (goldIcons != null && soldierId >= 0 && soldierId < goldIcons.Length && goldIcons[soldierId] != null)
+            goldIcons[soldierId].gameObject.SetActive(visible);
+    }
+
 }
