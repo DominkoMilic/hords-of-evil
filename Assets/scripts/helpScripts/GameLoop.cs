@@ -11,6 +11,7 @@ public class GameLoop : MonoBehaviour
     public Text waveText;
     public Text coinsText;
     public Text manaText;
+    public Text gameOverText;
 
     private bool isGameOver = false;
     public GameObject gameOverPanel;
@@ -62,6 +63,12 @@ public class GameLoop : MonoBehaviour
 
     // swordsman, shieldman, spearman, archer
     private int[] levelForSoldier = new int[] { 0, 0, 0, 0 };
+
+    [SerializeField] private float pulseSpeed = 4f;
+    [SerializeField] private float pulseScale = 1.1f;
+
+    private bool isPulsing = false;
+    private Vector3 originalScale;
 
     void Awake()
     {
@@ -155,6 +162,8 @@ private bool IsOverUI(Vector2 screenPosition)
         backgroundMusic.gameObject.SetActive(true);
         currentCoins = level.startCoins;
 
+        originalScale = dropFireballButton.transform.localScale;
+
         // Normal level (finite waves)
         if (level.levelNumber != 100)
         {
@@ -186,6 +195,17 @@ private bool IsOverUI(Vector2 screenPosition)
         this.enabled = false;
         backgroundMusic.gameObject.SetActive(false);
         gameOverMusic.gameObject.SetActive(true);
+
+        string[] gameOverOptions = { 
+            "Your tale does not end here. Rest, and rise again.", 
+            "The kingdom remembers your courage, even in defeat.",
+            "The world yet needs a hero. Try once more.",
+            "Defeat is but a lesson written in steel and blood.",
+            "Even legends stumble before they conquer.",
+            "This chapter closes, but the story remains unwritten." };
+
+        int randomIndex = Random.Range(0, gameOverOptions.Length);
+        gameOverText.text = gameOverOptions[randomIndex];
     }
 
     // ----------------- FIREBALL -----------------
@@ -392,7 +412,17 @@ private bool IsOverUI(Vector2 screenPosition)
 
     private void Update()
     {
-        dropFireballButton.interactable = IsFireballReady();
+        bool isReady = IsFireballReady();
+        dropFireballButton.interactable = isReady;
+
+        if (isReady)
+        {
+            StartPulse();
+        }
+        else
+        {
+            StopPulse();
+        }
 
         if (fireballCooldownStartedAt < 0f)
             return;
@@ -409,6 +439,26 @@ private bool IsOverUI(Vector2 screenPosition)
         fireballCooldownImage.fillAmount = remaining / fireballCooldown;
     }
 
+    private void StartPulse()
+    {
+        if (isPulsing) return;
 
+        isPulsing = true;
+    }
 
+    private void StopPulse()
+    {
+        if (!isPulsing) return;
+
+        isPulsing = false;
+        dropFireballButton.transform.localScale = originalScale;
+    }
+
+    private void LateUpdate()
+    {
+        if (!isPulsing) return;
+
+        float scale = 1f + Mathf.Sin(Time.time * pulseSpeed) * (pulseScale - 1f);
+        dropFireballButton.transform.localScale = originalScale * scale;
+    }
 }

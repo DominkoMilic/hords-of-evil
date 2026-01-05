@@ -19,32 +19,48 @@ public class ShieldmanScript : SoldierBaseScript
     public override void Initialize()
     {
         base.Initialize();
+    }
 
-        
+    private void OnEnable()
+    {
+        TryStartHealLoop();
+    }
+
+    private void OnDisable()
+    {
+        StopHealLoop();
+    }
+
+    private void OnDestroy()
+    {
+        StopHealLoop();
+    }
+
+    private void TryStartHealLoop()
+    {
+        if (!gameObject.activeInHierarchy) return;
+
         if (getCurrentHealth() <= 0) return;
-    
-        // displayAllStats();
+
         if (healRoutine == null)
             healRoutine = StartCoroutine(HealLoop());
     }
 
-     protected override void Update(){
-        base.Update();
+    private void StopHealLoop()
+    {
+        if (healRoutine != null)
+        {
+            StopCoroutine(healRoutine);
+            healRoutine = null;
+        }
     }
 
-    private void displayAllStats() {
-        Debug.Log(getSoldierName() + " stats: " +  
-            getMinDamage() + " / " +
-            getMaxDamage() + " / " +
-            getMaxHealth() + " / " +
-            getCurrentHealth() + " / " +
-            getCost() + " / " +
-            getSpeed() + " / " +
-            getAttackSpeed() + " / " +
-            getPhysicalArmor() + " / " +
-            getMagicArmor() + " / " +
-            getAttackRange()
-        );
+    protected override void Update()
+    {
+        base.Update();
+
+        if (healRoutine != null && getCurrentHealth() <= 0)
+            StopHealLoop();
     }
 
     private IEnumerator HealLoop()
@@ -53,15 +69,27 @@ public class ShieldmanScript : SoldierBaseScript
 
         while (true)
         {
+            if (!gameObject.activeInHierarchy || getCurrentHealth() <= 0)
+            {
+                healRoutine = null;
+                yield break;
+            }
+
             isCasting = true;
 
             StopCombat();
-
             animator?.SetTrigger("Heal");
 
             yield return new WaitForSeconds(healCastTime);
 
-            troopsHeal();
+            if (!gameObject.activeInHierarchy || getCurrentHealth() <= 0)
+            {
+                isCasting = false;
+                healRoutine = null;
+                yield break;
+            }
+
+            TroopsHeal();
 
             isCasting = false;
 
@@ -69,7 +97,7 @@ public class ShieldmanScript : SoldierBaseScript
         }
     }
 
-    private void troopsHeal()
+    private void TroopsHeal()
     {
         int healAmount = Mathf.FloorToInt(getMaxHealth() * healPercent);
 
@@ -86,30 +114,23 @@ public class ShieldmanScript : SoldierBaseScript
         }
     }
 
-    private void OnDisable()
-    {
-        if (healRoutine != null)
-        {
-            StopCoroutine(healRoutine);
-            healRoutine = null;
-        }
-    }
-
     protected override void dealDamage()
     {
         if (targetEnemy == null) return;
-    
+
         if (projectilePrefab == null || projectileSpawn == null)
         {
             ApplyMagicDamageInstant(targetEnemy);
             return;
         }
-    
+
         int dmg = CalculateMagicDamage(targetEnemy);
-    
+
         var proj = Instantiate(projectilePrefab, projectileSpawn.position, Quaternion.identity);
-        proj.SetSprite(projectileSprite);
-    
+
+        if (projectileSprite != null)
+            proj.SetSprite(projectileSprite);
+
         proj.Launch(targetEnemy.transform, () =>
         {
             if (targetEnemy != null)

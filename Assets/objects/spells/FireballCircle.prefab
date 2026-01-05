@@ -10,10 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2535647499147133752}
   - component: {fileID: 7511268718686509776}
-  - component: {fileID: 5597865795172682694}
-  - component: {fileID: 8967357269851885141}
   m_Layer: 0
-  m_Name: Fireball
+  m_Name: FireballCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,11 +73,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 2072283559
-  m_SortingLayer: 3
-  m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 8cd1a0c33effe76468eb1641d51b5295, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_SortingLayerID: -1950642773
+  m_SortingLayer: 1
+  m_SortingOrder: 50
+  m_Sprite: {fileID: 21300000, guid: 2a76efbb3490dbc4c99615f841deebed, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.3764706}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -89,43 +87,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5597865795172682694
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3612625351878771905}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88bdda1d220a1824e82d0c6fa9817a3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fireballData: {fileID: 11400000, guid: 2a07a8d791bcde0479eda4e185ca54ac, type: 2}
-  speed: 10
-  indicatorPrefab: {fileID: 7511268718686509776, guid: 9b297649f85b97948a4906d70da4e269, type: 3}
-  indicatorFadeIn: 1
-  indicatorMaxWorldSize: 0.8
-  earthCrackPrefab: {fileID: 3612625351878771905, guid: b6eb9a7e958782e45bf51fdebd2bd006, type: 3}
---- !u!95 &8967357269851885141
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3612625351878771905}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3f84db28a92878e45a17963227d642a8, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0

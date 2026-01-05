@@ -94,7 +94,9 @@ public class SoldierSpawnerScript : MonoBehaviour
         System.Action[] sounds =
         {
             AudioManagerScript.Instance.PlaySwordDraw,
-            AudioManagerScript.Instance.PlayHornBlow
+            AudioManagerScript.Instance.PlayHornBlow,
+            AudioManagerScript.Instance.PlaySpawnYell,
+            AudioManagerScript.Instance.PlayAreYouReady
         };
 
         int randomIndex = Random.Range(0, sounds.Length);

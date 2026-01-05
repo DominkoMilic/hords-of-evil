@@ -6,7 +6,6 @@ public class LanguageSetterScript : MonoBehaviour
     public Text exitText;
     public Text resumeText;
     public Text restartText;
-    public Text fireballText;
 
     public Text restartGameOverText;
     public Text exitGameOverText;
@@ -35,13 +34,6 @@ public class LanguageSetterScript : MonoBehaviour
         "Restart",
         "Reiniciar",
         "Igraj opet"
-    };
-
-    string[] fireballTextOptions = new string[]
-    {
-        "Fire",
-        "Fuego",
-        "Vatra"
     };
 
     string[] maxSoldiersAmountFormat = new string[]
@@ -75,7 +67,6 @@ public class LanguageSetterScript : MonoBehaviour
         resumeText.text = resumeTextOptions[idx];
         restartGameOverText.text = restartTextOptions[idx];
         exitGameOverText.text = exitTextOptions[idx];
-        fireballText.text = fireballTextOptions[idx];
         
         if (maxSoldiersAmountText)
             maxSoldiersAmountText.gameObject.SetActive(false);

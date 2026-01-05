@@ -32,6 +32,13 @@ public class EnemySpawnerScript : MonoBehaviour
     // Runtime lookup
     private readonly Dictionary<UnitId, GameObject> prefabById = new();
 
+    [Header("Wave Start SFX")]
+    [SerializeField] private bool playWaveStartSfx = true;
+    [SerializeField] private float waveSfxCooldown = 2f;
+
+    private float nextWaveSfxTime = -999f;
+
+
     // “Threat cost” per enemy (your earlier values)
     // IMPORTANT: These do NOT need to match bounty, they are for difficulty composition.
     private readonly Dictionary<UnitId, int> threat = new()
@@ -84,6 +91,8 @@ public class EnemySpawnerScript : MonoBehaviour
     void spawnNewWave()
     {
         int currentWave = game.getCurrentWave();
+
+        PlayWaveStartSfx();
 
         if (levelData.levelNumber == 100)
             SpawnEndlessWave(currentWave);
@@ -303,5 +312,25 @@ public class EnemySpawnerScript : MonoBehaviour
         EnemyBaseScript enemyBaseScript = newEnemy.GetComponent<EnemyBaseScript>();
         if (enemyBaseScript != null)
             enemyBaseScript.Initialize();
+    }
+
+    private void PlayWaveStartSfx()
+    {
+        if (!playWaveStartSfx) return;
+        if (AudioManagerScript.Instance == null) return;
+
+        if (Time.time < nextWaveSfxTime) return;
+        nextWaveSfxTime = Time.time + waveSfxCooldown;
+
+        System.Action[] sounds =
+        {
+            AudioManagerScript.Instance.PlayWaveStart1,
+            AudioManagerScript.Instance.PlayWaveStart2,
+            AudioManagerScript.Instance.PlayWaveStart3,
+            AudioManagerScript.Instance.PlayWaveStart4
+        };
+
+        int randomIndex = UnityEngine.Random.Range(0, sounds.Length);
+        sounds[randomIndex]?.Invoke();
     }
 }

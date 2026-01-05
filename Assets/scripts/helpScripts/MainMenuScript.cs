@@ -8,6 +8,7 @@ public class MainMenuScript : MonoBehaviour
     public GameObject difficultyPanel;
     public GameObject settingsPanel;
     public GameObject lorePanel;
+    public GameObject volumePanel;
 
     public Text playText;
     public Text exitText;
@@ -137,6 +138,23 @@ public class MainMenuScript : MonoBehaviour
 
     public void handleSettingsButtonClick(){
         settingsPanel.SetActive(true);
+
+        PlaySoundEffect();
+    }
+
+    public void handleVolumeButtonClick(){
+        volumePanel.SetActive(true);
+
+        PlaySoundEffect();
+    }
+
+    public void handleCloseSingleSettingPanelButtonClick(){
+        if(languagePanel.activeSelf)
+            languagePanel.SetActive(false);
+        else if(difficultyPanel.activeSelf)
+            difficultyPanel.SetActive(false);
+        else if(volumePanel.activeSelf)
+            volumePanel.SetActive(false);
 
         PlaySoundEffect();
     }
