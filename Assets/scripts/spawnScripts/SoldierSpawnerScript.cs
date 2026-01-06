@@ -9,16 +9,21 @@ public class SoldierSpawnerScript : MonoBehaviour
 
     public Text maxSoldiersAmountText;
 
-    private LanguageSetterScript languageSetter;
     private Coroutine maxTextRoutine;
+
+    private string[] soldierTypes =
+    {
+        "Swordsman",
+        "Monk",
+        "Spearman",
+        "Archer"
+    };
 
     [SerializeField] private float soundCooldown = 7f;
     private float lastSoundTime = -Mathf.Infinity;
 
     private void Start()
     {
-        languageSetter = FindFirstObjectByType<LanguageSetterScript>();
-
         if (maxSoldiersAmountText)
             maxSoldiersAmountText.gameObject.SetActive(false);
     }
@@ -60,15 +65,12 @@ public class SoldierSpawnerScript : MonoBehaviour
 
     private void ShowMaxSoldiersText(int soldierId)
     {
-        if (!maxSoldiersAmountText || !languageSetter || !game) return;
+        if (!maxSoldiersAmountText || !game) return;
 
         int current = game.GetAliveCount(soldierId);
         int max = game.maxSpawnedSoldiersPerType;
 
-        string localizedName = languageSetter.GetSoldierName(soldierId);
-
-        maxSoldiersAmountText.text =
-            languageSetter.GetMaxSoldiersText(localizedName, current, max);
+        maxSoldiersAmountText.text = $"Cannot spawn more {soldierTypes[soldierId]}! ({current}/{max})";
 
         maxSoldiersAmountText.gameObject.SetActive(true);
 

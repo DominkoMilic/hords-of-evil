@@ -13,6 +13,7 @@ public class EnemySpawnerScript : MonoBehaviour
 
     public GameLoop game;
     private LevelData levelData;
+    public GeneralManagerScript generalManager;
 
     [Header("Prefab Mapping (safer than array indexes)")]
     [SerializeField] private UnitPrefab[] prefabMap;
@@ -91,6 +92,9 @@ public class EnemySpawnerScript : MonoBehaviour
     void spawnNewWave()
     {
         int currentWave = game.getCurrentWave();
+
+        if(generalManager != null)
+            generalManager.DisplayGeneralMessage(currentWave);
 
         PlayWaveStartSfx();
 

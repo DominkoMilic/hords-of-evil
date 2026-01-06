@@ -13,9 +13,7 @@ public enum Difficulty
 
 public enum Language
 {
-    English = 0,
-    Spanish = 1,
-    Croatian = 2
+    English = 0
 }
 
 public enum UnitId
@@ -32,4 +30,16 @@ public enum UnitId
     Spearman,
     Shieldman,
     Archer
+}
+
+public enum AttackRangeType
+{
+    Melee,
+    Ranged
+}
+
+public enum DamageType
+{
+    Normal,
+    Magic
 }

@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: shieldmanLvl2
   m_EditorClassIdentifier: 
   soldierName: ShieldmanLvl2
-  minDamage: 7
-  maxDamage: 10
+  minDamage: 9
+  maxDamage: 13
   maxHealth: 116
   cost: 8
   speed: 0.85
   attackSpeed: 0.95
-  physicalArmor: 2
+  physicalArmor: 1
   magicArmor: 2
   attackRange: 2.7
   separationRadius: 1.2

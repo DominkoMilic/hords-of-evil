@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: shieldmanLvl4
   m_EditorClassIdentifier: 
   soldierName: ShieldmanLvl4
-  minDamage: 11
-  maxDamage: 16
+  minDamage: 15
+  maxDamage: 21
   maxHealth: 174
   cost: 10
   speed: 0.85

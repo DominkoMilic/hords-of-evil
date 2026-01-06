@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1340011c34ab8a54796324473f6dac80, type: 3}
+  m_Name: orcWarrior
+  m_EditorClassIdentifier: 
+  unitId: 3
+  side: 1
+  image: {fileID: 4920153528535472506, guid: ba1a9fe92bff8614784d2ae490f63167, type: 3}
+  nameEnglish: Orc Warrior
+  loreEnglish: "Raised in endless battle, orc warriors believe strength is the only
+    truth \u2014 and they intend to prove it.\r"
+  stats:
+    maxHealth: 202
+    minDamage: 13
+    maxDamage: 17
+    armorPhysical: 2
+    armorMagical: 2
+  economy:
+    cost: 0
+    bounty: 9
+  attackRangeType: 0
+  damageType: 0

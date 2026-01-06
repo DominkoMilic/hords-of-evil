@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1340011c34ab8a54796324473f6dac80, type: 3}
+  m_Name: paddleFish
+  m_EditorClassIdentifier: 
+  unitId: 2
+  side: 1
+  image: {fileID: 7353410598784652032, guid: 3f687cda5ca69b44b9671520d67763ef, type: 3}
+  nameEnglish: Paddle Fish
+  loreEnglish: "Awkward fighters wielding paddles with reckless determination.\r"
+  stats:
+    maxHealth: 136
+    minDamage: 7
+    maxDamage: 10
+    armorPhysical: 1
+    armorMagical: 1
+  economy:
+    cost: 0
+    bounty: 6
+  attackRangeType: 0
+  damageType: 0

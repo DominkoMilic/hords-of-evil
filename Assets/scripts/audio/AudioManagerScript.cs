@@ -38,6 +38,9 @@ public class AudioManagerScript : MonoBehaviour
     public AudioClip waveStartSound2;
     public AudioClip waveStartSound3;
     public AudioClip waveStartSound4;
+
+    [Header("Scroll Sounds")]
+    public AudioClip scrollOpenSound;
     
     private void Awake()
     {
@@ -109,6 +112,7 @@ public class AudioManagerScript : MonoBehaviour
     public void PlayWaveStart2()     => PlaySfx(waveStartSound2);
     public void PlayWaveStart3()     => PlaySfx(waveStartSound3);
     public void PlayWaveStart4()     => PlaySfx(waveStartSound4);
+    public void PlayScrollOpen()     => PlaySfx(scrollOpenSound);
 
     public void PlayMusic(AudioClip music, bool loop = true)
     {

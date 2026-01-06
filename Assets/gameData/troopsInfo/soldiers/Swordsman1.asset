@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1340011c34ab8a54796324473f6dac80, type: 3}
+  m_Name: Swordsman1
+  m_EditorClassIdentifier: 
+  unitId: 8
+  side: 0
+  image: {fileID: 8401750504432798484, guid: fd62463812a2b8b41b2b2652c1ea40f3, type: 3}
+  nameEnglish: Swordsman
+  loreEnglish: Hardened by battle, these warriors strike with confidence, holding
+    the line against growing threats.
+  stats:
+    maxHealth: 135
+    minDamage: 7
+    maxDamage: 11
+    armorPhysical: 1
+    armorMagical: 1
+  economy:
+    cost: 7
+    bounty: 0
+  attackRangeType: 0
+  damageType: 0
