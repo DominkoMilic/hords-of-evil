@@ -12136,10 +12136,10 @@ MonoBehaviour:
   spawnYellSound: {fileID: 8300000, guid: 600d544a96595134591bc52b6f09bb4b, type: 3}
   fireballHitSound: {fileID: 8300000, guid: b2fdea3abcdfd4244a93e0c1a6ec4346, type: 3}
   fireballWhooshSound: {fileID: 8300000, guid: edcba514b7a7a6a4fa54b9dac5cff3d1, type: 3}
-  waveStartSound1: {fileID: 8300000, guid: 63b5c5c338a1e8f4280425347ccab868, type: 3}
+  waveStartSound1: {fileID: 8300000, guid: f702705805af4f144bd7a74635a908c6, type: 3}
   waveStartSound2: {fileID: 8300000, guid: d4999f36e93c7904ca2bc4742b37d1b3, type: 3}
   waveStartSound3: {fileID: 8300000, guid: 7cdb3a3254c65ab418ab5e88255461c8, type: 3}
-  waveStartSound4: {fileID: 8300000, guid: f702705805af4f144bd7a74635a908c6, type: 3}
+  waveStartSound4: {fileID: 8300000, guid: 63b5c5c338a1e8f4280425347ccab868, type: 3}
   scrollOpenSound: {fileID: 8300000, guid: 3380a28e08ca1a34ca1def21251d6771, type: 3}
 --- !u!4 &2077334458
 Transform:
@@ -12150,7 +12150,7 @@ Transform:
   m_GameObject: {fileID: 2077334456}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.60051, y: 5.74039, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

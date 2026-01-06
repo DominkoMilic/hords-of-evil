@@ -81,6 +81,9 @@ public class EnemySpawnerScript : MonoBehaviour
     {
         if (!game) return;
 
+        if (!GameFlowScript.Started)
+            return;
+
         if (game.shouldNewWaveStart)
         {
             spawnNewWave();
@@ -96,7 +99,7 @@ public class EnemySpawnerScript : MonoBehaviour
         if(generalManager != null)
             generalManager.DisplayGeneralMessage(currentWave);
 
-        PlayWaveStartSfx();
+        PlayWaveStartSfx(currentWave);
 
         if (levelData.levelNumber == 100)
             SpawnEndlessWave(currentWave);
@@ -318,13 +321,19 @@ public class EnemySpawnerScript : MonoBehaviour
             enemyBaseScript.Initialize();
     }
 
-    private void PlayWaveStartSfx()
+    private void PlayWaveStartSfx(int currentWave)
     {
         if (!playWaveStartSfx) return;
         if (AudioManagerScript.Instance == null) return;
 
         if (Time.time < nextWaveSfxTime) return;
         nextWaveSfxTime = Time.time + waveSfxCooldown;
+
+        if(currentWave == 0)
+        {
+            AudioManagerScript.Instance.PlayWaveStart1();
+            return;
+        }
 
         System.Action[] sounds =
         {

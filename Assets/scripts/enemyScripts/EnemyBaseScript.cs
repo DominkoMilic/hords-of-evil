@@ -244,6 +244,9 @@ public class EnemyBaseScript : MonoBehaviour
     {
         if(!isAlive) return;
 
+        if (!GameFlowScript.Started)
+            return;
+
         if (isCasting) return;
 
         UpdateStuckState();

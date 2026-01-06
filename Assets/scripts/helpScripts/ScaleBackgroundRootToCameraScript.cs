@@ -25,6 +25,9 @@ public class ScaleBackgroundRootToCameraScript : MonoBehaviour
             Resize();
             lastScreen = new Vector2(Screen.width, Screen.height);
         }
+
+        if (!GameFlowScript.Started)
+            return;
     }
 
     private void Resize()

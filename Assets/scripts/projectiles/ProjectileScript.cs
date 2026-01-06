@@ -49,6 +49,9 @@ public class ProjectileScript : MonoBehaviour
     {
         if (target == null) { Destroy(gameObject); return; }
 
+        if (!GameFlowScript.Started)
+            return;
+
         Vector3 endPos = target.position;
 
         t += Time.deltaTime / Mathf.Max(0.0001f, travelTime);

@@ -32,6 +32,9 @@ public class SoldierSpawnerScript : MonoBehaviour
     {
         if (!game) return;
 
+        if (!GameFlowScript.Started)
+            return;
+
         if (!game.CanSpawn(soldierId))
         {
             ShowMaxSoldiersText(soldierId);

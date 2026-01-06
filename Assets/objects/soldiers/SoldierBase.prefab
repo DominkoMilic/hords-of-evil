@@ -121,6 +121,19 @@ MonoBehaviour:
   allyMask:
     serializedVersion: 2
     m_Bits: 2048
+  stuckCheckInterval: 0.25
+  stuckMoveEpsilon: 0.01
+  stuckTimeToTrigger: 0.6
+  sidestepDuration: 0.7
+  sidestepStrength: 0.8
+  widenSepMultiplier: 1.6
+  widenStrMultiplier: 1.6
+  frontlineY: 8
+  fallbackY: -4
+  fightZoneTopY: 8
+  fightZoneBottomY: -7
+  yEpsilon: 0.15
+  awarenessRadius: 6
 --- !u!58 &5638888731385076756
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -72,6 +72,9 @@ public class GameLoop : MonoBehaviour
 
     void Awake()
     {
+        if (GameFlowScript.Started)
+            GameFlowScript.StopGame();
+
         allSoldiersUpgradeLevels = new LevelUpgradeData[][]
         {
             swordsmanUpgradeLevels,
@@ -414,6 +417,9 @@ private bool IsOverUI(Vector2 screenPosition)
     {
         bool isReady = IsFireballReady();
         dropFireballButton.interactable = isReady;
+
+        if (!GameFlowScript.Started)
+            return;
 
         if (isReady)
         {

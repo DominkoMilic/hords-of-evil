@@ -76,6 +76,9 @@ public class FireballScript : MonoBehaviour
     {
         if (hasExploded) return;
 
+        if (!GameFlowScript.Started)
+            return;
+
         FireballFall();
         UpdateIndicator();
     }

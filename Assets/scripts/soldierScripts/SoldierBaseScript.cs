@@ -64,6 +64,15 @@ public class SoldierBaseScript : MonoBehaviour
     float _sidestepTimer;
     int _sidestepSign; 
 
+    [Header("Simple Frontline")]
+    [SerializeField] float frontlineY = 8.0f;   
+    [SerializeField] float fallbackY = -6.0f;    
+    [SerializeField] float fightZoneTopY = 8.0f;  
+    [SerializeField] float fightZoneBottomY = -13f;
+    [SerializeField] float yEpsilon = 0.15f;
+    [SerializeField] float awarenessRadius = 6f;
+
+
     private static readonly float[] ARMOR_REDUCTION =
     {
         0.0f,  
@@ -244,6 +253,9 @@ public class SoldierBaseScript : MonoBehaviour
     {
         if(!isAlive) return;
 
+        if (!GameFlowScript.Started)
+            return;
+
         if (isCasting) return;
 
         UpdateStuckState();
@@ -251,12 +263,20 @@ public class SoldierBaseScript : MonoBehaviour
         if(!isFighting){
             findClosestEnemy();
 
-            if(targetEnemy) followEnemy();
-            else walkStraightUp();
+            if (targetEnemy) followEnemy();
+            else
+            {
+                if (AnyEnemyNearMe(awarenessRadius))
+                    PushToFrontlineOrHold();
+                else
+                    FallBackOrHold();
+            }
         }
         else{
             battle();
         }
+
+        ClampYToBand();
 
         if(isSoldierDead()) soldierDeath();
     }
@@ -302,6 +322,39 @@ public class SoldierBaseScript : MonoBehaviour
         }
     }
 
+    private bool AnyEnemyNearMe(float radius)
+    {
+        float r2 = radius * radius;
+        Vector3 myPos = transform.position;
+
+        foreach (var e in EnemyBaseScript.allEnemies)
+        {
+            if (!e) continue;
+
+            Vector3 d = e.transform.position - myPos;
+
+            if (e.transform.position.y < fightZoneBottomY || e.transform.position.y > fightZoneTopY)
+                continue;
+
+            if (d.sqrMagnitude <= r2)
+                return true;
+        }
+        return false;
+    }
+
+
+    private void PushToFrontlineOrHold()
+    {
+        if (transform.position.y < frontlineY - yEpsilon)
+            Move(Vector3.up);
+    }
+
+    private void FallBackOrHold()
+    {
+        if (transform.position.y > fallbackY + yEpsilon)
+            Move(Vector3.down);
+    }
+
 
     private void Move(Vector3 desiredDir)
     {
@@ -330,6 +383,13 @@ public class SoldierBaseScript : MonoBehaviour
             combined /= Mathf.Max(1f, mag);
 
         transform.position += combined * speed * Time.deltaTime;
+
+        Vector3 p = transform.position;
+        if (p.y > frontlineY) p.y = frontlineY;
+        if (p.y < fallbackY) p.y = fallbackY;
+            
+        transform.position = p;
+
     }
 
 
@@ -365,6 +425,14 @@ public class SoldierBaseScript : MonoBehaviour
         return (Vector3)push;
     }
 
+    private void ClampYToBand()
+    {
+        Vector3 p = transform.position;
+        p.y = Mathf.Clamp(p.y, fallbackY, frontlineY);
+        transform.position = p;
+    }
+
+
     private void followEnemy(){
         float stopRange = attackRange;
         float d = Vector3.Distance(transform.position, targetEnemy.transform.position);
@@ -378,23 +446,31 @@ public class SoldierBaseScript : MonoBehaviour
         battle();
     }
 
-    private void findClosestEnemy(){
+   private void findClosestEnemy()
+    {
         float closestDistance = Mathf.Infinity;
         EnemyBaseScript closest = null;
 
         foreach (var enemy in EnemyBaseScript.allEnemies)
         {
-            if(!enemy) continue;
+            if (!enemy) continue;
+
+            float ey = enemy.transform.position.y;
+    
+            if (ey > fightZoneTopY) continue;
+            if (ey < fightZoneBottomY) continue;
 
             float distance = Vector3.Distance(transform.position, enemy.transform.position);
-            if(distance < closestDistance){
+            if (distance < closestDistance)
+            {
                 closestDistance = distance;
                 closest = enemy;
             }
+        }
 
-            targetEnemy = closest ? closest : null;
-        } 
+        targetEnemy = closest;
     }
+
 
     private void battle(){
         if (isCasting) return;
