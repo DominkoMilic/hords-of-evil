@@ -14,7 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitId: 8
   side: 0
-  image: {fileID: 8401750504432798484, guid: fd62463812a2b8b41b2b2652c1ea40f3, type: 3}
+  frames:
+  - {fileID: 21300000, guid: 225b2d2e5dbf5624eb6216c9e48293c6, type: 3}
+  - {fileID: 21300000, guid: edf276ce851630a4997df6eef8775bd4, type: 3}
+  - {fileID: 21300000, guid: fab2be97d645941429dedf66f25aa85c, type: 3}
+  - {fileID: 21300000, guid: cfb2a9b8f50f6a746aac24a4bf7ea51c, type: 3}
+  - {fileID: 21300000, guid: 5e6f67dae5aeff94fb1346f8afcc538f, type: 3}
+  - {fileID: 21300000, guid: 389edc9369d19ec4ebbf828841ab312f, type: 3}
+  - {fileID: 21300000, guid: 073c28216fff8b945a4cc51b90cc1dbb, type: 3}
+  - {fileID: 21300000, guid: 4a09d52bfea466948b09881ad34cd063, type: 3}
+  fps: 10
   nameEnglish: Swordsman
   loreEnglish: Hardened by battle, these warriors strike with confidence, holding
     the line against growing threats.

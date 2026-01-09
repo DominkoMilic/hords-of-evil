@@ -230,6 +230,9 @@ public class SoldierBaseScript : MonoBehaviour
             animator.Play("walk");
             animator.speed = speed / 1.2f;    
         }
+
+        int maxAllowed = game != null ? game.maxSpawnedSoldiersPerType : 15;
+        AchievementEvents.EmitUnitSpawned(soldierName, maxAllowed);
     }
 
     private void upgradeSystem(int level, int soldierId){
@@ -621,6 +624,8 @@ public class SoldierBaseScript : MonoBehaviour
 
     public void upgradeSoldier(string selectedSoldier)
     {
+        AchievementEvents.EmitAnyUIButtonPressed();
+        
         game = FindFirstObjectByType<GameLoop>();
         if (!game) return;
 
@@ -669,6 +674,7 @@ public class SoldierBaseScript : MonoBehaviour
             unregistered = true;
         }
 
+        AchievementEvents.EmitUnitDied(soldierName);
         Destroy(gameObject, 1f);
     }
 }

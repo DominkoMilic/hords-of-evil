@@ -14,7 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitId: 4
   side: 1
-  image: {fileID: -8810257102464659941, guid: f7b4e085ffd9b2d4db7b5caaf38b8ff3, type: 3}
+  frames:
+  - {fileID: 21300000, guid: 63b7167cdd68f28498afafce6448cf02, type: 3}
+  - {fileID: 21300000, guid: 0afa82e8572b0bf47991fdddf14d29db, type: 3}
+  - {fileID: 21300000, guid: 77a67c390f097e4489cc078965b7a159, type: 3}
+  - {fileID: 21300000, guid: fbd2c2da01e12304e9e21b9acf78ea5d, type: 3}
+  - {fileID: 21300000, guid: 9c9548e558047cd479b4f3731d716c98, type: 3}
+  - {fileID: 21300000, guid: f4d2a7af7db6dd849b8b7976a4dc1712, type: 3}
+  fps: 10
   nameEnglish: Gnoll
   loreEnglish: "Savage pack hunters who strike from afar to sow chaos.\r"
   stats:

@@ -96,6 +96,8 @@ public class EnemySpawnerScript : MonoBehaviour
     {
         int currentWave = game.getCurrentWave();
 
+        AchievementEvents.EmitWaveCleared(currentWave);
+
         if(generalManager != null)
             generalManager.DisplayGeneralMessage(currentWave);
 

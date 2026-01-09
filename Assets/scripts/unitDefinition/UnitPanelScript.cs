@@ -31,6 +31,7 @@ public class UnitPanelScript : MonoBehaviour
     [SerializeField] private Text unitNameText;
     [SerializeField] private Image unitImage;
     [SerializeField] private Text unitLoreText;
+    [SerializeField] private UISpriteAnimator unitAnimator;
 
     [Header("UI Refs - Stats")]
     [SerializeField] private Text healthText;
@@ -190,7 +191,18 @@ public class UnitPanelScript : MonoBehaviour
         }
 
         if (unitNameText != null) unitNameText.text = data.GetName(currentLanguage);
-        if (unitImage != null) unitImage.sprite = data.image;
+        if (unitAnimator != null)
+        {
+            if (data.HasAnimation)
+                unitAnimator.Play(data.frames, data.fps);
+            else
+                unitAnimator.Stop(null);
+        }
+        else
+        {
+            if (unitImage != null) unitImage.sprite = data.GetFirstFrame();
+        }
+
 
         if (unitLoreText != null) unitLoreText.text = data.GetLore(currentLanguage);
 

@@ -14,7 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitId: 1
   side: 1
-  image: {fileID: 6885502735726166932, guid: dfd992983efc69b49a987eccb79877c0, type: 3}
+  frames:
+  - {fileID: 21300000, guid: c9cb9150dd20de044afa67163f1cac9e, type: 3}
+  - {fileID: 21300000, guid: a33425899993b6047950f8039be2d70d, type: 3}
+  - {fileID: 21300000, guid: 77d407eb68fc8d24bb499d1727ccad56, type: 3}
+  - {fileID: 21300000, guid: 9b4515e9306bd234fa7d29992f11c5b0, type: 3}
+  - {fileID: 21300000, guid: 257456bfc1d1f2a43947c9377e733ce0, type: 3}
+  - {fileID: 21300000, guid: 12b13d5939caecb48b41a9c3afd2dfe2, type: 3}
+  - {fileID: 21300000, guid: 1a4475c0161e4104a98b122145dddea6, type: 3}
+  - {fileID: 21300000, guid: 399b71aebc6225142b740833a230a2d1, type: 3}
+  fps: 10
   nameEnglish: Harpoon Fish
   loreEnglish: "Fragile fish relying on distance and thrown harpoons to survive.\r"
   stats:

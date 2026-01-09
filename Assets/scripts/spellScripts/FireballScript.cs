@@ -45,6 +45,8 @@ public class FireballScript : MonoBehaviour
         heal = fireballData.heal;
         range = fireballData.range;
 
+        AchievementEvents.EmitFireballCast();
+
         if (animator) animator.Play("fireballPixelartAnimController", 0, 0f);
 
         SpawnIndicator();
@@ -144,7 +146,7 @@ public class FireballScript : MonoBehaviour
 
             float distance = Vector3.Distance(fallPosition, enemy.transform.position);
             if (distance <= range)
-                enemy.setCurrentHealth(-damage);
+                enemy.setCurrentHealth(-damage, DamageSource.Fireball);
         }
 
         Destroy(gameObject);

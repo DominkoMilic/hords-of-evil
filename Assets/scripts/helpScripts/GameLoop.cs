@@ -32,6 +32,7 @@ public class GameLoop : MonoBehaviour
     private int currentWave = 0;          // wave index / counter
     private int totalWaveNumber;
     private int currentMana = 0;
+    private float runStartTime;
 
     public int waveEnemyKillCount = 0;    // how many enemies died this wave
     public int enemiesInCurrentWave = 0;  // how many enemies were spawned this wave
@@ -97,6 +98,9 @@ public class GameLoop : MonoBehaviour
         fireballReadyAt = Time.time + fireballCooldown;
         fireballCooldownImage.fillAmount = 1f;
         dropFireballButton.interactable = false;
+
+        runStartTime = Time.time;
+        AchievementEvents.EmitRunStarted();
     }
 
 private bool IsOverUI(Vector2 screenPosition)
@@ -191,6 +195,13 @@ private bool IsOverUI(Vector2 screenPosition)
 
     public void setIsGameOver(bool newState)
     {
+        AchievementEvents.EmitRunEnded(new RunEndInfo {
+            died = true,
+            waveReached = currentWave + 1,
+            runSeconds = Time.time - runStartTime,
+            goldAtDeathOrEnd = currentCoins
+        });
+
         isGameOver = newState;
         Time.timeScale = 0f;
         pauseGameButton.gameObject.SetActive(false);

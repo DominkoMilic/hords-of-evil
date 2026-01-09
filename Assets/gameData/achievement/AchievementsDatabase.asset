@@ -1,0 +1,339 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0a271950cd923d48bc06de8e91a860a, type: 3}
+  m_Name: AchievementsDatabase
+  m_EditorClassIdentifier: 
+  achievements:
+  - id: 1
+    title: First Blood
+    description: Kill your first enemy
+    secret: 0
+    icon: {fileID: 1320481435402747707, guid: 79765d241cddf434f93531d8d7c779d8, type: 3}
+    type: 0
+    targetInt: 0
+    targetFloat: 0
+    targetString: 
+  - id: 2
+    title: Warm-Up
+    description: Kill 10 enemies in one run
+    secret: 0
+    icon: {fileID: -2895821608431225175, guid: da3f03dabd7b2c441a9cf991e1735dad, type: 3}
+    type: 1
+    targetInt: 10
+    targetFloat: 0
+    targetString: 
+  - id: 3
+    title: Executioner
+    description: Kill 50 enemies in one run
+    secret: 0
+    icon: {fileID: -4045114995007804087, guid: df7573a0b585217428d359132411e511, type: 3}
+    type: 1
+    targetInt: 50
+    targetFloat: 0
+    targetString: 
+  - id: 4
+    title: Butcher
+    description: Kill 150 enemies in one run
+    secret: 0
+    icon: {fileID: -8047051033378874645, guid: 009ec24ff3389cd4da2d6cb5875af26f, type: 3}
+    type: 1
+    targetInt: 150
+    targetFloat: 0
+    targetString: 
+  - id: 5
+    title: Wipeout
+    description: Kill 200 enemies in one run
+    secret: 0
+    icon: {fileID: 7779671946577531283, guid: 50aaa409ceb6b57449fadc5450f6054a, type: 3}
+    type: 1
+    targetInt: 200
+    targetFloat: 0
+    targetString: 
+  - id: 6
+    title: No Mercy
+    description: Kill total of 1000 enemies
+    secret: 0
+    icon: {fileID: -4220041424205073255, guid: d21ec9220b6d92340ae231e7b28573a0, type: 3}
+    type: 2
+    targetInt: 1000
+    targetFloat: 0
+    targetString: 
+  - id: 7
+    title: Recruit
+    description: Survive 1 wave
+    secret: 0
+    icon: {fileID: 6210811236209494756, guid: 33635cad7a6c5944bab864f4162cad2f, type: 3}
+    type: 4
+    targetInt: 1
+    targetFloat: 0
+    targetString: 
+  - id: 8
+    title: Soldier
+    description: Survive 5 waves in one run
+    secret: 0
+    icon: {fileID: 7434456782249352827, guid: 608a84d08ef26d24e8f151b2fedfc9ba, type: 3}
+    type: 4
+    targetInt: 5
+    targetFloat: 0
+    targetString: 
+  - id: 9
+    title: Veteran
+    description: Survive 10 waves in one run
+    secret: 0
+    icon: {fileID: -6332953689221305802, guid: adcbfb04d5fb1cd4693f1a626938acc1, type: 3}
+    type: 4
+    targetInt: 10
+    targetFloat: 0
+    targetString: 
+  - id: 10
+    title: Elite
+    description: Survive 25 waves in one run
+    secret: 0
+    icon: {fileID: -6316172121249847576, guid: f7458f164be914646a18d4abcfb890f8, type: 3}
+    type: 4
+    targetInt: 25
+    targetFloat: 0
+    targetString: 
+  - id: 11
+    title: Legend
+    description: Survive 50 waves in one run
+    secret: 0
+    icon: {fileID: -8655283127939185689, guid: 7c21f157540e6f94099fa2523f258198, type: 3}
+    type: 4
+    targetInt: 50
+    targetFloat: 0
+    targetString: 
+  - id: 12
+    title: Endless
+    description: Survive 100 waves in one run
+    secret: 0
+    icon: {fileID: 8203296445935762900, guid: d6ef231aa12e03d4d8eb81ecb12a5bb1, type: 3}
+    type: 4
+    targetInt: 100
+    targetFloat: 0
+    targetString: 
+  - id: 13
+    title: Firestarter
+    description: Cast fireball 5 times in one run
+    secret: 0
+    icon: {fileID: 7925988472399399130, guid: b774ac24d823d074db57e9cd85bd586f, type: 3}
+    type: 6
+    targetInt: 5
+    targetFloat: 0
+    targetString: 
+  - id: 14
+    title: Firemaster
+    description: Cast fireball 8 times in one run
+    secret: 0
+    icon: {fileID: 2998659854083310657, guid: ee7a45ca489911e4a839412b83e6cf51, type: 3}
+    type: 6
+    targetInt: 8
+    targetFloat: 0
+    targetString: 
+  - id: 15
+    title: Inferno
+    description: Cast fireball 12 times in one run
+    secret: 0
+    icon: {fileID: -7512649611927254034, guid: faffccf4805a30649826970372eefe91, type: 3}
+    type: 6
+    targetInt: 12
+    targetFloat: 0
+    targetString: 
+  - id: 16
+    title: Archmage
+    description: Cast fireball 100 times in total
+    secret: 0
+    icon: {fileID: -3199964136620063867, guid: 885ecde33188cca46a6c95f4abe791e0, type: 3}
+    type: 7
+    targetInt: 100
+    targetFloat: 0
+    targetString: 
+  - id: 17
+    title: Overcharged
+    description: Kill 50 enemies using fireball in one run
+    secret: 0
+    icon: {fileID: 6948879182841836551, guid: 50179bb480ce447499858a12a31454c1, type: 3}
+    type: 3
+    targetInt: 50
+    targetFloat: 0
+    targetString: 
+  - id: 18
+    title: Rookie Commander
+    description: Spawn 20 units in one run
+    secret: 0
+    icon: {fileID: 405703759442509878, guid: 1d5d79633ae7c5941a5af56abb824fec, type: 3}
+    type: 8
+    targetInt: 20
+    targetFloat: 0
+    targetString: 
+  - id: 19
+    title: Field General
+    description: Spawn 80 units in one run
+    secret: 0
+    icon: {fileID: 7478624164575424136, guid: 7d49c527497429140ac409889277bee8, type: 3}
+    type: 8
+    targetInt: 80
+    targetFloat: 0
+    targetString: 
+  - id: 20
+    title: Army Builder
+    description: Have 60 units alive on the field at same time
+    secret: 0
+    icon: {fileID: 9215194778275542171, guid: 5b651b02451905749b3b11fe2a34d2cd, type: 3}
+    type: 9
+    targetInt: 60
+    targetFloat: 0
+    targetString: 
+  - id: 21
+    title: Disposable Army
+    description: Get 70 of your soldiers killed in one run
+    secret: 0
+    icon: {fileID: -2335433575401469594, guid: 8b833e2a1de461944a59c2bdd83c0742, type: 3}
+    type: 10
+    targetInt: 70
+    targetFloat: 0
+    targetString: 
+  - id: 22
+    title: Unit Spammer
+    description: Spawn maximum amount of units of any type
+    secret: 0
+    icon: {fileID: 341573570333582060, guid: 40661296df646bc42a2071a1a0bcacaf, type: 3}
+    type: 11
+    targetInt: 0
+    targetFloat: 0
+    targetString: 
+  - id: 23
+    title: Quality Over Quantity
+    description: Beat 5 waves using only one type of soldiers
+    secret: 0
+    icon: {fileID: 4823299613982408177, guid: e010d97187f512c46910f316641eb772, type: 3}
+    type: 12
+    targetInt: 5
+    targetFloat: 0
+    targetString: 
+  - id: 24
+    title: Solo Act
+    description: Beat a wave without spawning any troops
+    secret: 0
+    icon: {fileID: -7565858440850518682, guid: 7e57d9b9b71e7cc49b4a855a34cc7815, type: 3}
+    type: 13
+    targetInt: 1
+    targetFloat: 0
+    targetString: 
+  - id: 25
+    title: AFK Victory
+    description: Clear wave without spawning troops or casting a spell
+    secret: 0
+    icon: {fileID: 7084765741154324451, guid: 94b035fae4da3b54d98a247ca125f74e, type: 3}
+    type: 14
+    targetInt: 1
+    targetFloat: 0
+    targetString: 
+  - id: 26
+    title: Oops
+    description: Die within 30 seconds of game start
+    secret: 0
+    icon: {fileID: -7374029341430245201, guid: 9c7a5f9b55d645240945bbec4975ca07, type: 3}
+    type: 16
+    targetInt: 0
+    targetFloat: 30
+    targetString: 
+  - id: 27
+    title: Greedy
+    description: Die while having at least 100 gold
+    secret: 0
+    icon: {fileID: -8505863315912457947, guid: 3ed714cfb092bd64fa2a21e0ec06a184, type: 3}
+    type: 17
+    targetInt: 100
+    targetFloat: 0
+    targetString: 
+  - id: 28
+    title: Getting Started
+    description: Start your first run
+    secret: 0
+    icon: {fileID: 6718797854515585862, guid: 58c38ff464e6c0c49b0ef9c1b1a3644b, type: 3}
+    type: 15
+    targetInt: 0
+    targetFloat: 0
+    targetString: 
+  - id: 29
+    title: Try Again
+    description: Die 10 times in total
+    secret: 0
+    icon: {fileID: 5262234845328719436, guid: 55ae730a96bd86c489bbf2f5f2b811d1, type: 3}
+    type: 18
+    targetInt: 10
+    targetFloat: 0
+    targetString: 
+  - id: 30
+    title: Persistance
+    description: Die 50 times in total
+    secret: 0
+    icon: {fileID: -8138487283928511355, guid: 83b1100e2d748ef499a3cf56f088a9d8, type: 3}
+    type: 18
+    targetInt: 50
+    targetFloat: 0
+    targetString: 
+  - id: 31
+    title: One More Run
+    description: Die 100 times in total
+    secret: 0
+    icon: {fileID: -7586134798879412485, guid: 7b8117fbeb8b17f4ba4181eb2db690b9, type: 3}
+    type: 18
+    targetInt: 100
+    targetFloat: 0
+    targetString: 
+  - id: 32
+    title: They Never Stopped Coming
+    description: Die after reaching wave 50
+    secret: 0
+    icon: {fileID: -8845656421905988541, guid: a55aa425ebd6a3c429bd917bbcd89cc3, type: 3}
+    type: 5
+    targetInt: 50
+    targetFloat: 0
+    targetString: 
+  - id: 33
+    title: Completionist
+    description: Unlock 30 achievements
+    secret: 0
+    icon: {fileID: 1983668810225296598, guid: f60f1bd7e10897249a51f359f55fe891, type: 3}
+    type: 20
+    targetInt: 30
+    targetFloat: 0
+    targetString: 
+  - id: 34
+    title: Master of the Arena
+    description: Unlock all achievements
+    secret: 0
+    icon: {fileID: 4182482613319214909, guid: a2bf5221a820a8d4e8f4cfa99e758f4f, type: 3}
+    type: 21
+    targetInt: 0
+    targetFloat: 0
+    targetString: 
+  - id: 35
+    title: Developer's favourite
+    description: Thats my kingdom
+    secret: 1
+    icon: {fileID: 3762551856750237398, guid: be1bf1bcb65205749ab5db68bb8c862b, type: 3}
+    type: 22
+    targetInt: 0
+    targetFloat: 0
+    targetString: 
+  - id: 36
+    title: Button Masher
+    description: Press buttons 150 times in one run
+    secret: 0
+    icon: {fileID: 1146241165131603846, guid: b1271f423826b8445a5dadbb9c448099, type: 3}
+    type: 19
+    targetInt: 150
+    targetFloat: 0
+    targetString: 

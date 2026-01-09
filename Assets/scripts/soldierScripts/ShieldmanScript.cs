@@ -19,6 +19,7 @@ public class ShieldmanScript : SoldierBaseScript
     public override void Initialize()
     {
         base.Initialize();
+        TryStartHealLoop();
     }
 
     private void OnEnable()
@@ -38,6 +39,8 @@ public class ShieldmanScript : SoldierBaseScript
 
     private void TryStartHealLoop()
     {
+        Debug.Log($"[{name}] TryStartHealLoop hp={getCurrentHealth()} active={gameObject.activeInHierarchy} routine={(healRoutine!=null)}");
+
         if (!gameObject.activeInHierarchy) return;
 
         if (getCurrentHealth() <= 0) return;
@@ -65,7 +68,7 @@ public class ShieldmanScript : SoldierBaseScript
 
     private IEnumerator HealLoop()
     {
-        yield return new WaitForSeconds(Random.Range(25f, 30f));
+        yield return new WaitForSeconds(Random.Range(2f, 3f));
 
         while (true)
         {
@@ -93,7 +96,7 @@ public class ShieldmanScript : SoldierBaseScript
 
             isCasting = false;
 
-            yield return new WaitForSeconds(Random.Range(25f, 30f));
+            yield return new WaitForSeconds(Random.Range(15f, 20f));
         }
     }
 

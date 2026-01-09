@@ -14,7 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitId: 0
   side: 1
-  image: {fileID: -8500010858523654090, guid: f16bb585856176b4cb38836dbe88f6e8, type: 3}
+  frames:
+  - {fileID: 21300000, guid: 2c2cdaa51385dfd4b81fe65021ae8a26, type: 3}
+  - {fileID: 21300000, guid: e2c2922fac2385b4aa5f34fec6dc8117, type: 3}
+  - {fileID: 21300000, guid: 1c422b3f1c4f61e4ba8c599720bb0c5d, type: 3}
+  - {fileID: 21300000, guid: cd582e17ebd9a9045b76698158109b55, type: 3}
+  - {fileID: 21300000, guid: 99f11c400c93efc41bbffc996c6a712a, type: 3}
+  - {fileID: 21300000, guid: ea54d592ecd8a204dbe3427203cc84b7, type: 3}
+  - {fileID: 21300000, guid: c508a2a8d93e8f8479e7ac66a9aeac3c, type: 3}
+  - {fileID: 21300000, guid: 33395c821e12a0849bd34510950bf22c, type: 3}
+  fps: 10
   nameEnglish: Skeleton Knight
   loreEnglish: Undead warriors bound by ancient oaths, marching without fear.
   stats:

@@ -34,12 +34,15 @@ public class SoldierSpawnerScript : MonoBehaviour
 
         if (!GameFlowScript.Started)
             return;
+            
+        AchievementEvents.EmitAnyUIButtonPressed();
 
         if (!game.CanSpawn(soldierId))
         {
             ShowMaxSoldiersText(soldierId);
             return;
         }
+
 
         Vector3 spawnPos = new Vector3(Random.Range(-2f, 2f), -7f, 0f);
 

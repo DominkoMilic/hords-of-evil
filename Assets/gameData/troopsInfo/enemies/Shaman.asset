@@ -14,7 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitId: 5
   side: 1
-  image: {fileID: 7655821307664132786, guid: 256698a988fa34842aac498686bf32c1, type: 3}
+  frames:
+  - {fileID: 21300000, guid: ef5c9a6319e190141a93842ea7d0ec62, type: 3}
+  - {fileID: 21300000, guid: 7b6328be4f0b7394c92c77fd294097b9, type: 3}
+  - {fileID: 21300000, guid: fc7b0d1de864ff04fa2a041767c38351, type: 3}
+  - {fileID: 21300000, guid: e7d13149371e89e4695861a360b8a764, type: 3}
+  - {fileID: 21300000, guid: 9f53c592af86b3243b60fea40763995d, type: 3}
+  - {fileID: 21300000, guid: b2e4f3a35eb811c49b19b6bcb03aea16, type: 3}
+  - {fileID: 21300000, guid: 35b087293cf6dd8489831924f77b71d4, type: 3}
+  - {fileID: 21300000, guid: 568d2693d5fa09b478682424c6f744bc, type: 3}
+  fps: 10
   nameEnglish: Shaman
   loreEnglish: "Guided by dark spirits, shamans twist the flow of battle, strengthening
     allies and breaking enemy resolve.\r"

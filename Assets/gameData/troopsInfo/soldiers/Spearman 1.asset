@@ -14,7 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitId: 9
   side: 0
-  image: {fileID: 4920153528535472506, guid: a657aecdba6257a429a952be6ed5cea2, type: 3}
+  frames:
+  - {fileID: 21300000, guid: 2a691a0887724674796328b245c4f50d, type: 3}
+  - {fileID: 21300000, guid: 7e094b3488ee50247bc917a25b368eb5, type: 3}
+  - {fileID: 21300000, guid: a1d26ac4429c3064b9816ec3c6acf548, type: 3}
+  - {fileID: 21300000, guid: 8b055f14c329fc34084a287c6eb12a4e, type: 3}
+  - {fileID: 21300000, guid: 1387f185863e9fa449845d6588035784, type: 3}
+  - {fileID: 21300000, guid: 1d75e4cc4416ee5478d225b61270fdf0, type: 3}
+  - {fileID: 21300000, guid: 3abbc778d38257a488fdf0addc01cdd5, type: 3}
+  - {fileID: 21300000, guid: ad54ce043b13ae6409fc38f4aa0d9092, type: 3}
+  - {fileID: 21300000, guid: ae41b41de73947a469bc34fc21c8a97a, type: 3}
+  - {fileID: 21300000, guid: 650d6eabf4400284c8f4d6135c082998, type: 3}
+  - {fileID: 21300000, guid: bbfbe4fe27bc9674b8787ac4966f3921, type: 3}
+  - {fileID: 21300000, guid: af6725aefc8d20346a6e0813756371fa, type: 3}
+  fps: 10
   nameEnglish: Spearman
   loreEnglish: Deadlier and more disciplined, they deliver powerful thrusts that
     fell foes in moments.

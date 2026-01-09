@@ -40,7 +40,8 @@ public class UnitDefinition : ScriptableObject
     public UnitSide side = UnitSide.Player;
 
     [Header("Presentation")]
-    public Sprite image;
+    public Sprite[] frames;
+    [Min(1)] public int fps = 10;
 
     [Header("Localization - English")]
     public string nameEnglish;
@@ -60,4 +61,7 @@ public class UnitDefinition : ScriptableObject
     public string GetLore(Language language) => loreEnglish;
 
     public int GetCostOrBounty() => side == UnitSide.Player ? economy.cost : economy.bounty;
+
+    public bool HasAnimation => frames != null && frames.Length > 0;
+    public Sprite GetFirstFrame() => HasAnimation ? frames[0] : null;
 }

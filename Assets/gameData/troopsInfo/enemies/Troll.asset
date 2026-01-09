@@ -14,7 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitId: 7
   side: 1
-  image: {fileID: -8946714090547424257, guid: 8b4d7dc3e33a9814bb8fb35bcde0acef, type: 3}
+  frames:
+  - {fileID: 21300000, guid: d0982096af0acc24babad492a193f532, type: 3}
+  - {fileID: 21300000, guid: b184627befcd7984cbe4a50c24f48e1d, type: 3}
+  - {fileID: 21300000, guid: edb20d93210a5684592dd3eea452c865, type: 3}
+  - {fileID: 21300000, guid: b2fcf0bf3d76e4f4884fd9d1fe850c5f, type: 3}
+  - {fileID: 21300000, guid: d15df019bd262d94193cf2eba40b1706, type: 3}
+  - {fileID: 21300000, guid: efe5cd88fadad9a4b840866a6205c612, type: 3}
+  - {fileID: 21300000, guid: 5ebdb5b2fcc28d24e8990b0eb066a410, type: 3}
+  - {fileID: 21300000, guid: 8948672a16521fe479b96130035dbae1, type: 3}
+  - {fileID: 21300000, guid: 5824467213e6e0943b259a2cb3c70d06, type: 3}
+  - {fileID: 21300000, guid: cf702659198d3fa45857d9a155826dae, type: 3}
+  - {fileID: 21300000, guid: 0b375cfc0765b154c8b06c6c56c5bfb5, type: 3}
+  - {fileID: 21300000, guid: 78fc4282e4419eb43870dd28c7d4523d, type: 3}
+  fps: 10
   nameEnglish: Troll
   loreEnglish: "Massive brutes bred to smash defenses through sheer destruction.\r"
   stats:

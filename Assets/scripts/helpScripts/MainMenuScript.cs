@@ -11,6 +11,7 @@ public class MainMenuScript : MonoBehaviour
     public GameObject soldierCharactersPanel;
     public GameObject CharactersPanel;
     public GameObject volumePanel;
+    public GameObject AchievementsPanel;
 
     public void handleExitButtonClick(){
         Application.Quit();
@@ -106,5 +107,17 @@ public class MainMenuScript : MonoBehaviour
         {
             AudioManagerScript.Instance.PlayButtonClick();
         }
+    }
+
+    public void handleAchievementsButtonClick(){
+        AchievementsPanel.SetActive(true);
+
+        PlaySoundEffect();
+    }
+
+    public void handleCloseAchievementsPanelButtonClick(){
+        AchievementsPanel.SetActive(false);
+
+        PlaySoundEffect();
     }
 }

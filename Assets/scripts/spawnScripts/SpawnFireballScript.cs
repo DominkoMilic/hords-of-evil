@@ -7,6 +7,8 @@ public class SpawnFireballScript : MonoBehaviour
 
    public void SpawnFireball()
     {
+        AchievementEvents.EmitAnyUIButtonPressed();
+        
         if (!game.IsFireballReady())
             return;
     

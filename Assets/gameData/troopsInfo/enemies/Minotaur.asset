@@ -14,7 +14,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitId: 6
   side: 1
-  image: {fileID: 4811869714284642359, guid: 78921e35c8849e749aa5da44d5faeb83, type: 3}
+  frames:
+  - {fileID: 21300000, guid: 6e4f4aca033c3ba45b6f612742ae7d81, type: 3}
+  - {fileID: 21300000, guid: 27fc7b9fb2dadd4468745c9a1b7fc9ac, type: 3}
+  - {fileID: 21300000, guid: 6c2183bff5f937444876ae7afacf34f7, type: 3}
+  - {fileID: 21300000, guid: b522e62c0dc1364429fe8d9efe72ed70, type: 3}
+  - {fileID: 21300000, guid: 661d0b5772491324591b663e8b299152, type: 3}
+  - {fileID: 21300000, guid: 716ee6b3338d42d4f9bf98aac9631eb7, type: 3}
+  - {fileID: 21300000, guid: 26d926b2e7bc6d2498b8f4df63cdf392, type: 3}
+  - {fileID: 21300000, guid: 13d3e8ca3f39e5347b15a6fb5ed80b55, type: 3}
+  - {fileID: 21300000, guid: a868846cab3878d4bb8d4f7341939e62, type: 3}
+  - {fileID: 21300000, guid: d3d6f03b127688348b820ac744a1ea6a, type: 3}
+  - {fileID: 21300000, guid: 672e76dde751a9c40806ef7472c346d4, type: 3}
+  - {fileID: 21300000, guid: 35fda5373a3802045a860e6feed42284, type: 3}
+  - {fileID: 21300000, guid: 987edc764e2baea47a0da595da970571, type: 3}
+  - {fileID: 21300000, guid: 6da8a38d5ce5690499f178e4b8ce5125, type: 3}
+  - {fileID: 21300000, guid: df98dc21797a6a94eb3c9fcde43915ba, type: 3}
+  - {fileID: 21300000, guid: d8d6a2f6bc326774b9a5608d3b185c2c, type: 3}
+  fps: 10
   nameEnglish: Minotaur
   loreEnglish: "Towering beasts that charge forward with crushing horns.\r"
   stats:

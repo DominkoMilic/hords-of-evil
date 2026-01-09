@@ -14,7 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitId: 3
   side: 1
-  image: {fileID: 4920153528535472506, guid: ba1a9fe92bff8614784d2ae490f63167, type: 3}
+  frames:
+  - {fileID: 21300000, guid: eacf0e5c632c4d04a98531652e64cb26, type: 3}
+  - {fileID: 21300000, guid: 44eed78d594706942bdf56e6322e459b, type: 3}
+  - {fileID: 21300000, guid: 1db603e2951f7814b994f1f460d6afcb, type: 3}
+  - {fileID: 21300000, guid: ab485c115fbb8b94dae1e60ea775534b, type: 3}
+  - {fileID: 21300000, guid: 0dc94613f5763724191ff411aec95669, type: 3}
+  - {fileID: 21300000, guid: d835629e4404a004b87f834b7d75e5de, type: 3}
+  - {fileID: 21300000, guid: 235c37d1aaf8e0e4ca00dea8b2a153b9, type: 3}
+  fps: 10
   nameEnglish: Orc Warrior
   loreEnglish: "Raised in endless battle, orc warriors believe strength is the only
     truth \u2014 and they intend to prove it.\r"

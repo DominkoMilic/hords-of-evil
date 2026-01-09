@@ -51,6 +51,11 @@ public class EnemyBaseScript : MonoBehaviour
     [SerializeField] float widenSepMultiplier = 1.6f;  
     [SerializeField] float widenStrMultiplier = 1.6f;
 
+    [Header("Frontline / Fight zone")]
+    [SerializeField] float fightZoneTopY = 8f;    
+    [SerializeField] float fightZoneBottomY = -7f;
+    [SerializeField] float yEpsilon = 0.15f;
+
     Vector3 _lastPos;
     float _sinceLastCheck;
     float _stuckTimer;
@@ -66,6 +71,8 @@ public class EnemyBaseScript : MonoBehaviour
         0.15f, 
         0.25f  
     };
+
+    private DamageSource lastDamageSource = DamageSource.Unknown;
 
     const string PREF_KEY = "SelectedDifficulty";
 
@@ -99,11 +106,24 @@ public class EnemyBaseScript : MonoBehaviour
         maxHealth = newMaxHealth;
     }
 
-    public void setCurrentHealth(int changeHealthBy) {
+    public void setCurrentHealth(int changeHealthBy)
+    {
+        // Default assumption: damage from soldier
+        setCurrentHealth(changeHealthBy, DamageSource.Soldier);
+    }
+
+    public void setCurrentHealth(int changeHealthBy, DamageSource source)
+    {
         flashColor(changeHealthBy);
+
+        // Only record source when taking damage
+        if (changeHealthBy < 0)
+            lastDamageSource = source;
+
         currentHealth += changeHealthBy;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
     }
+
 
     public void setMinDamage(int newMinDamage) {
         minDamage = newMinDamage;
@@ -304,6 +324,12 @@ public class EnemyBaseScript : MonoBehaviour
             if (_sidestepTimer <= 0f) _isSidestepping = false;
         }
     }
+ 
+    private bool CanAttackNow()
+    {
+        float y = transform.position.y;
+        return y <= fightZoneTopY + yEpsilon && y >= fightZoneBottomY - yEpsilon;
+    }
 
 
     private void Move(Vector3 desiredDir)
@@ -374,6 +400,9 @@ public class EnemyBaseScript : MonoBehaviour
         float stopRange = attackRange;
         float d = Vector3.Distance(transform.position, targetSoldier.transform.position);
 
+        if (!CanAttackNow())
+            stopRange = 0f;
+
         if (d > stopRange)
         {
             Vector3 direction = (targetSoldier.transform.position - transform.position).normalized;
@@ -404,6 +433,12 @@ public class EnemyBaseScript : MonoBehaviour
 
     private void battle(){
         if (isCasting) return;
+
+        if (!CanAttackNow())
+        {
+            StopCombat();
+            return;
+        }
 
         if(targetSoldier){
             float distance = Vector3.Distance(targetSoldier.transform.position, transform.position);
@@ -565,6 +600,16 @@ public class EnemyBaseScript : MonoBehaviour
         } 
 
         allEnemies.Remove(this);
+
+        AchievementEvents.EmitEnemyKilled();
+
+        bool abilityKill =
+            lastDamageSource == DamageSource.Fireball ||
+            lastDamageSource == DamageSource.Ability;
+
+        if (abilityKill)
+            AchievementEvents.EmitEnemyKilledByAbility(true);
+
         
         Destroy(gameObject, 1f);
     }

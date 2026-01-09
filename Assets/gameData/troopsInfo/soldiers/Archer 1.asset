@@ -14,7 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitId: 11
   side: 0
-  image: {fileID: -776957325500069028, guid: 76fd4c009d0a5e94fbc94b2d25e8da7b, type: 3}
+  frames:
+  - {fileID: 21300000, guid: 5bddf3c88d30c6b45b3caa133ea95a78, type: 3}
+  - {fileID: 21300000, guid: f6e72ec1e4963174d87d62c3a78d44cf, type: 3}
+  - {fileID: 21300000, guid: b87a7dbf4598c0049830b9b953d4a499, type: 3}
+  - {fileID: 21300000, guid: ae4581e05869049469260debf4fa9e3f, type: 3}
+  - {fileID: 21300000, guid: 558f3a2ad2157cf429fc5d99070274b7, type: 3}
+  - {fileID: 21300000, guid: b3ccdb84033a22a49a42d88f822798d6, type: 3}
+  fps: 10
   nameEnglish: Archer
   loreEnglish: Sharpened by experience, their arrows fly faster and deadlier, punishing
     enemies from safety.
