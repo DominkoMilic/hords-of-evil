@@ -13,10 +13,6 @@ public static class AchievementEvents
 
     public static event Action<int> WaveCleared; // wave index cleared (1-based or whatever you use)
 
-    /// <summary>
-    /// unitType: e.g. "Archer", "Swordsman"
-    /// maxAllowedForThisType: your design limit for this run
-    /// </summary>
     public static event Action<string, int> UnitSpawned;
     public static event Action<string> UnitDied;
 
@@ -25,7 +21,6 @@ public static class AchievementEvents
 
     public static event Action SecretDecorationClicked;
 
-    // --- Emit helpers (optional convenience) ---
     public static void EmitRunStarted() => RunStarted?.Invoke();
     public static void EmitRunEnded(RunEndInfo info) => RunEnded?.Invoke(info);
 
@@ -47,7 +42,7 @@ public static class AchievementEvents
 public struct RunEndInfo
 {
     public bool died;
-    public int waveReached;     // highest wave reached/cleared (your choice, be consistent)
+    public int waveReached;    
     public float runSeconds;
     public int goldAtDeathOrEnd;
 }

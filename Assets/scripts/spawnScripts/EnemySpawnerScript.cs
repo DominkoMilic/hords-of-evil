@@ -74,7 +74,6 @@ public class EnemySpawnerScript : MonoBehaviour
 
         levelData = game.level;
         spawnNewWave();
-        game.updateCurrentWave();
     }
 
     private void Update()
@@ -86,17 +85,17 @@ public class EnemySpawnerScript : MonoBehaviour
 
         if (game.shouldNewWaveStart)
         {
-            spawnNewWave();
+            game.waveClearedEmitted = false;
             game.shouldNewWaveStart = false;
-            game.updateCurrentWave();
+
+            game.updateCurrentWave();  
+            spawnNewWave(); 
         }
     }
 
     void spawnNewWave()
     {
         int currentWave = game.getCurrentWave();
-
-        AchievementEvents.EmitWaveCleared(currentWave);
 
         if(generalManager != null)
             generalManager.DisplayGeneralMessage(currentWave);

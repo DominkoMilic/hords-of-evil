@@ -38,6 +38,7 @@ public class GameLoop : MonoBehaviour
     public int enemiesInCurrentWave = 0;  // how many enemies were spawned this wave
     public bool shouldNewWaveStart = false;
     public int totalKills = 0;
+    public bool waveClearedEmitted = false;
 
     private bool isFireballSelected = false;
     private Vector3 fireballThrowPosition;
@@ -299,18 +300,14 @@ private bool IsOverUI(Vector2 screenPosition)
     {
         int numberOfEnemiesInWave = 0;
 
-        // ENDLESS MODE: use the count provided by the spawner
         if (level.levelNumber == 100)
         {
             numberOfEnemiesInWave = enemiesInCurrentWave;
         }
         else
         {
-            // FINITE MODE: sum enemyCount from level data,
-            // but guard against going past the waves array.
             if (currentWave < 0 || currentWave >= level.waves.Length)
             {
-                // No more waves defined; you could also end the game here
                 shouldNewWaveStart = false;
                 return;
             }
@@ -323,14 +320,21 @@ private bool IsOverUI(Vector2 screenPosition)
             }
         }
 
-        // If wave has no enemies defined, never trigger new wave from kills
         if (numberOfEnemiesInWave <= 0)
         {
             shouldNewWaveStart = false;
             return;
         }
 
-        shouldNewWaveStart = (waveEnemyKillCount >= numberOfEnemiesInWave);
+        bool cleared = (waveEnemyKillCount >= numberOfEnemiesInWave);
+
+        if (cleared && !waveClearedEmitted)
+        {
+            AchievementEvents.EmitWaveCleared(currentWave + 1);
+            waveClearedEmitted = true;
+        }
+
+        shouldNewWaveStart = cleared;
     }
 
     public void updateWaveText(bool isEndless)

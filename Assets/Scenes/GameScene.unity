@@ -9173,6 +9173,7 @@ MonoBehaviour:
   enemiesInCurrentWave: 0
   shouldNewWaveStart: 0
   totalKills: 0
+  waveClearedEmitted: 0
   level: {fileID: 11400000, guid: d98e3a0b9ed75624f8cf65fa592157c1, type: 2}
   swordsmanStats:
   - {fileID: 11400000, guid: 434f3c19ea3796b4a831bcc53eccc550, type: 2}
