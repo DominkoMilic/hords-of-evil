@@ -172,11 +172,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   game: {fileID: 0}
-  soldierId: 0
+  soldierId: 2
   spawnButtonScript: {fileID: 0}
   allyMask:
     serializedVersion: 2
     m_Bits: 2048
+  stuckCheckInterval: 0.25
+  stuckMoveEpsilon: 0.01
+  stuckTimeToTrigger: 0.6
+  sidestepDuration: 0.7
+  sidestepStrength: 0.8
+  widenSepMultiplier: 1.6
+  widenStrMultiplier: 1.6
+  frontlineY: 8
+  fallbackY: -6
+  fightZoneTopY: 8
+  fightZoneBottomY: -13
+  yEpsilon: 0.15
+  awarenessRadius: 6
 --- !u!58 &453674321828477561
 CircleCollider2D:
   m_ObjectHideFlags: 0

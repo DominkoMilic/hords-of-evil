@@ -42,8 +42,9 @@ public class SpawnButtonScript : MonoBehaviour
 
         if(game){
             LevelUpgradeData startData = game.getAllsoldiersUpgradeLevel(spawnSoldierId, 0);
-        
-            setSoldierCostText(soldierScript.getCost().ToString(), spawnSoldierId);
+            if (startData != null)
+                setSoldierCostText(startData.costPrice.ToString(), spawnSoldierId);
+                
             if(startData)
                 updateUpgradePriceText(startData.upgradePrice.ToString(), spawnSoldierId);
         }

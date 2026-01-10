@@ -204,7 +204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   game: {fileID: 0}
-  soldierId: 0
+  soldierId: 1
   spawnButtonScript: {fileID: 0}
   allyMask:
     serializedVersion: 2
@@ -216,6 +216,12 @@ MonoBehaviour:
   sidestepStrength: 0.8
   widenSepMultiplier: 1.6
   widenStrMultiplier: 1.6
+  frontlineY: 8
+  fallbackY: -6
+  fightZoneTopY: 8
+  fightZoneBottomY: -13
+  yEpsilon: 0.15
+  awarenessRadius: 6
   healRadius: 3.5
   healPercent: 0.1
   healCastTime: 0.8
