@@ -129,6 +129,16 @@ MonoBehaviour:
   allyMask:
     serializedVersion: 2
     m_Bits: 4096
+  stuckCheckInterval: 0.25
+  stuckMoveEpsilon: 0.01
+  stuckTimeToTrigger: 0.6
+  sidestepDuration: 0.7
+  sidestepStrength: 0.8
+  widenSepMultiplier: 1.6
+  widenStrMultiplier: 1.6
+  fightZoneTopY: 7.8
+  fightZoneBottomY: -7
+  yEpsilon: 0.15
   projectilePrefab: {fileID: 3612437188815491503, guid: 3e3993598b2f07445807a27dd4152ce0, type: 3}
   projectileSpawn: {fileID: 8103679114250336088}
   projectileSprite: {fileID: 21300000, guid: 7a71786932fce3e44b91e4f1a1577a35, type: 3}

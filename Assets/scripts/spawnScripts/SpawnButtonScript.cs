@@ -40,8 +40,6 @@ public class SpawnButtonScript : MonoBehaviour
         SoldierBaseScript soldierScript = soldier.GetComponent<SoldierBaseScript>();
         soldierScript.spawnButtonScript = this;
 
-        soldierScript.Initialize();
-
         if(game){
             LevelUpgradeData startData = game.getAllsoldiersUpgradeLevel(spawnSoldierId, 0);
         

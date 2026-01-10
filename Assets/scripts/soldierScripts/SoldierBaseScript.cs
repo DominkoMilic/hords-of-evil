@@ -206,33 +206,20 @@ public class SoldierBaseScript : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         game = FindFirstObjectByType<GameLoop>();
         if(spriteRenderer) spriteRenderer.sortingLayerName = "Characters"; 
-        if(game && spawnButtonScript){
-            soldierName = spawnButtonScript.soldierName;
-            switch (soldierName)
+        if (game)
+        {
+            switch (soldierId)
             {
-                case "Swordsman":
-                    upgradeSystem(game.getLevelForSoldier(0), 0);
-                    break;
-                case "Shieldman":
-                    upgradeSystem(game.getLevelForSoldier(1), 1);
-                    break;
-                case "Spearman":
-                    upgradeSystem(game.getLevelForSoldier(2), 2);
-                    break;
-                case "Archer":
-                    upgradeSystem(game.getLevelForSoldier(3), 3);
-                    break;
-                default:
-                    break;
+                case 0: soldierName = "Swordsman"; upgradeSystem(game.getLevelForSoldier(0), 0); break;
+                case 1: soldierName = "Shieldman"; upgradeSystem(game.getLevelForSoldier(1), 1); break;
+                case 2: soldierName = "Spearman";  upgradeSystem(game.getLevelForSoldier(2), 2); break;
+                case 3: soldierName = "Archer";    upgradeSystem(game.getLevelForSoldier(3), 3); break;
             }
         }
         if (animator && isAlive){ 
             animator.Play("walk");
             animator.speed = speed / 1.2f;    
         }
-
-        int maxAllowed = game != null ? game.maxSpawnedSoldiersPerType : 15;
-        AchievementEvents.EmitUnitSpawned(soldierName, maxAllowed);
     }
 
     private void upgradeSystem(int level, int soldierId){

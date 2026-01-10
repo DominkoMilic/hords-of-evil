@@ -96,7 +96,7 @@ public class ShieldmanScript : SoldierBaseScript
 
             isCasting = false;
 
-            yield return new WaitForSeconds(Random.Range(15f, 20f));
+            yield return new WaitForSeconds(Random.Range(25f, 30f));
         }
     }
 

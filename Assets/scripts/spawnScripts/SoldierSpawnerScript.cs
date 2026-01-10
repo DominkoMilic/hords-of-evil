@@ -67,6 +67,8 @@ public class SoldierSpawnerScript : MonoBehaviour
 
         game.RegisterSpawn(soldierId);
         game.addCoins(-cost);
+
+        AchievementEvents.EmitSoldierSpawned(baseScript.getSoldierName(), game.maxSpawnedSoldiersPerType);
     }
 
     private void ShowMaxSoldiersText(int soldierId)

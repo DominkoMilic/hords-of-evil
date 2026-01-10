@@ -9167,7 +9167,7 @@ MonoBehaviour:
   dropFireballButton: {fileID: 1263623472}
   fireball: {fileID: 3612625351878771905, guid: 467ea441fa87ca343b41c1f25600bac2, type: 3}
   fireballSpawner: {fileID: 1177362546}
-  fireballCooldown: 55
+  fireballCooldown: 1
   fireballCooldownImage: {fileID: 1868985577}
   waveEnemyKillCount: 0
   enemiesInCurrentWave: 0

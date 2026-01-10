@@ -52,7 +52,7 @@ public class EnemyBaseScript : MonoBehaviour
     [SerializeField] float widenStrMultiplier = 1.6f;
 
     [Header("Frontline / Fight zone")]
-    [SerializeField] float fightZoneTopY = 8f;    
+    [SerializeField] float fightZoneTopY = 7.8f;    
     [SerializeField] float fightZoneBottomY = -7f;
     [SerializeField] float yEpsilon = 0.15f;
 
@@ -108,7 +108,6 @@ public class EnemyBaseScript : MonoBehaviour
 
     public void setCurrentHealth(int changeHealthBy)
     {
-        // Default assumption: damage from soldier
         setCurrentHealth(changeHealthBy, DamageSource.Soldier);
     }
 
@@ -116,7 +115,6 @@ public class EnemyBaseScript : MonoBehaviour
     {
         flashColor(changeHealthBy);
 
-        // Only record source when taking damage
         if (changeHealthBy < 0)
             lastDamageSource = source;
 
@@ -491,6 +489,8 @@ public class EnemyBaseScript : MonoBehaviour
     {
         if (!isAlive || isCasting) return;
         if (targetSoldier == null) return;
+        if (!CanAttackNow()) return;
+        if(!isFighting) return;
 
         dealDamage();
     }
