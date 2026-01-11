@@ -75,6 +75,7 @@ public class ShieldmanScript : SoldierBaseScript
             if (!gameObject.activeInHierarchy || getCurrentHealth() <= 0)
             {
                 healRoutine = null;
+                StopHealLoop();
                 yield break;
             }
 

@@ -246,6 +246,12 @@ public class SoldierBaseScript : MonoBehaviour
         if (!GameFlowScript.Started)
             return;
 
+        if (isSoldierDead())
+        {
+            soldierDeath();
+            return;
+        }
+
         if (isCasting) return;
 
         UpdateStuckState();
@@ -267,8 +273,6 @@ public class SoldierBaseScript : MonoBehaviour
         }
 
         ClampYToBand();
-
-        if(isSoldierDead()) soldierDeath();
     }
 
     void LateUpdate() {
