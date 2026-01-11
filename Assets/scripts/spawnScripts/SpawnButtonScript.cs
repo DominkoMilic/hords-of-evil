@@ -40,12 +40,14 @@ public class SpawnButtonScript : MonoBehaviour
         SoldierBaseScript soldierScript = soldier.GetComponent<SoldierBaseScript>();
         soldierScript.spawnButtonScript = this;
 
-        if(game){
-            LevelUpgradeData startData = game.getAllsoldiersUpgradeLevel(spawnSoldierId, 0);
-            if (startData != null)
-                setSoldierCostText(startData.costPrice.ToString(), spawnSoldierId);
-                
-            if(startData)
+        if(game){ 
+            LevelUpgradeData startData = game.getAllsoldiersUpgradeLevel(spawnSoldierId, 0); 
+        
+            string soldierCost =  game.getAllSoldierStats(spawnSoldierId, game.getLevelForSoldier(spawnSoldierId)).cost.ToString();
+
+            setSoldierCostText(soldierCost, spawnSoldierId);
+        
+            if(startData) 
                 updateUpgradePriceText(startData.upgradePrice.ToString(), spawnSoldierId);
         }
     }
